@@ -3,1142 +3,1325 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kịch Bản Phỏng Vấn · Thu Ngân Vinmec</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Cẩm Nang 6 Ngày · Vinmec</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy: #0b2c4a;
-  --blue: #1456a0;
-  --sky: #2e86de;
-  --ice: #e8f4fd;
-  --gold: #c9a84c;
-  --gold-light: #f5e6b8;
-  --white: #ffffff;
-  --off-white: #f8fbff;
-  --text: #1a2a3a;
-  --muted: #5a7a9a;
-  --line: #d0e4f4;
+  --ink:     #0e1f2f;
+  --navy:    #0d3558;
+  --blue:    #1260a8;
+  --sky:     #3b8fe8;
+  --ice:     #ddeeff;
+  --pale:    #f2f7fd;
+  --gold:    #c8963a;
+  --gold-bg: #fdf4e3;
+  --green:   #1e7c52;
+  --green-bg:#e8f6ef;
+  --red:     #b83232;
+  --red-bg:  #fdeaea;
+  --white:   #ffffff;
+  --line:    #d4e4f4;
+  --muted:   #607d97;
+  --serif: 'Lora', Georgia, serif;
+  --sans:  'Plus Jakarta Sans', sans-serif;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--off-white);
-  color: var(--text);
-  min-height: 100vh;
+  font-family: var(--sans);
+  background: var(--pale);
+  color: var(--ink);
+  line-height: 1.7;
 }
 
-/* ── HERO ── */
-.hero {
-  background: linear-gradient(135deg, var(--navy) 0%, #0f3d6b 50%, #1456a0 100%);
-  padding: 56px 40px 48px;
+/* ─── COVER ─── */
+.cover {
+  background: var(--navy);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  padding: 60px 32px;
   position: relative;
   overflow: hidden;
 }
-.hero::before {
-  content: '';
+.cover-grid {
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 70% 50%, rgba(46,134,222,0.18) 0%, transparent 65%);
+  background-image:
+    linear-gradient(rgba(61,143,232,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(61,143,232,0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
-.hero-badge {
-  display: inline-block;
-  border: 1px solid rgba(201,168,76,0.6);
-  color: var(--gold);
+.cover-glow {
+  position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(59,143,232,0.18) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.cover-tag {
   font-size: 11px;
+  font-weight: 600;
   letter-spacing: 3px;
   text-transform: uppercase;
-  padding: 6px 18px;
-  border-radius: 2px;
-  margin-bottom: 20px;
-  position: relative;
-}
-.hero h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(28px, 5vw, 42px);
-  font-weight: 600;
-  color: var(--white);
-  line-height: 1.2;
-  margin-bottom: 12px;
-  position: relative;
-}
-.hero h1 em {
-  font-style: italic;
-  color: #a8d0f0;
-}
-.hero p {
-  color: rgba(255,255,255,0.6);
-  font-size: 14px;
-  font-weight: 300;
-  letter-spacing: 0.5px;
-  position: relative;
-}
-.hero-stats {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-top: 36px;
-  position: relative;
-}
-.stat {
-  text-align: center;
-}
-.stat-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 32px;
-  font-weight: 600;
-  color: var(--gold);
-  line-height: 1;
-}
-.stat-label {
-  font-size: 11px;
-  color: rgba(255,255,255,0.5);
-  margin-top: 4px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-/* ── TABS ── */
-.tabs-wrap {
-  background: var(--white);
-  border-bottom: 1px solid var(--line);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 12px rgba(11,44,74,0.08);
-}
-.tabs {
-  display: flex;
-  max-width: 900px;
-  margin: 0 auto;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.tabs::-webkit-scrollbar { display: none; }
-.tab {
-  flex: 1;
-  min-width: 120px;
-  padding: 16px 12px;
-  border: none;
-  background: none;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12.5px;
-  font-weight: 500;
-  color: var(--muted);
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  border-bottom: 2.5px solid transparent;
-  transition: all 0.2s;
-  white-space: nowrap;
-  position: relative;
-}
-.tab:hover { color: var(--blue); }
-.tab.active {
-  color: var(--blue);
-  border-bottom-color: var(--sky);
-  font-weight: 600;
-}
-.tab-dot {
-  display: inline-block;
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--gold);
-  margin-right: 6px;
-  vertical-align: middle;
-}
-
-/* ── MAIN ── */
-.main {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 40px 24px 80px;
-}
-
-/* ── SECTION INTRO ── */
-.section-intro {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  margin-bottom: 32px;
-  padding: 20px 24px;
-  background: linear-gradient(135deg, var(--ice) 0%, #f0f7ff 100%);
-  border-left: 3px solid var(--sky);
-  border-radius: 0 8px 8px 0;
-}
-.section-intro-icon {
-  font-size: 28px;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-.section-intro h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--navy);
-  margin-bottom: 4px;
-}
-.section-intro p {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-/* ── CARD ── */
-.card {
-  background: var(--white);
-  border-radius: 12px;
-  margin-bottom: 20px;
-  border: 1px solid var(--line);
-  overflow: hidden;
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-.card:hover {
-  box-shadow: 0 8px 32px rgba(11,44,74,0.1);
-  transform: translateY(-1px);
-}
-.card-header {
-  padding: 20px 24px;
-  cursor: pointer;
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  user-select: none;
-}
-.q-number {
-  flex-shrink: 0;
-  width: 32px; height: 32px;
-  background: linear-gradient(135deg, var(--navy), var(--blue));
-  color: var(--white);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 600;
-  margin-top: 1px;
-}
-.q-meta {
-  flex: 1;
-}
-.q-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 3px 10px;
-  border-radius: 20px;
-  margin-bottom: 8px;
-}
-.tag-opening { background: #e8f5e9; color: #2e7d32; }
-.tag-skill   { background: #e3f2fd; color: #1565c0; }
-.tag-adapt   { background: #fff3e0; color: #e65100; }
-.tag-shift   { background: #f3e5f5; color: #6a1b9a; }
-.tag-pro     { background: #fce4ec; color: #c62828; }
-.tag-close   { background: var(--gold-light); color: #7a5c00; }
-
-.q-text {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--navy);
-  line-height: 1.5;
-}
-.toggle-btn {
-  flex-shrink: 0;
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  border: 1.5px solid var(--line);
-  background: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--muted);
-  transition: all 0.2s;
-  font-size: 16px;
-  margin-top: 2px;
-}
-.card.open .toggle-btn {
-  background: var(--sky);
-  border-color: var(--sky);
-  color: var(--white);
-  transform: rotate(180deg);
-}
-
-/* ── ANSWER ── */
-.card-answer {
-  display: none;
-  padding: 0 24px 24px 70px;
-  animation: slideDown 0.25s ease;
-}
-.card.open .card-answer { display: block; }
-
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.answer-block {
-  background: linear-gradient(135deg, #f7fbff 0%, #f0f6fd 100%);
-  border-radius: 8px;
-  padding: 20px 22px;
-  border: 1px solid var(--line);
-  position: relative;
-}
-.answer-block::before {
-  content: '"';
-  position: absolute;
-  top: -8px; left: 16px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 64px;
   color: var(--sky);
-  opacity: 0.25;
-  line-height: 1;
-}
-.answer-text {
-  font-size: 14px;
-  line-height: 1.85;
-  color: var(--text);
-  font-style: italic;
-  position: relative;
-}
-.answer-text strong {
-  font-style: normal;
-  color: var(--navy);
-  font-weight: 600;
-}
-
-.tip-box {
-  margin-top: 14px;
-  padding: 12px 16px;
-  background: var(--gold-light);
-  border-radius: 6px;
-  border-left: 3px solid var(--gold);
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-}
-.tip-icon { font-size: 16px; flex-shrink: 0; }
-.tip-text { font-size: 12.5px; color: #5c4200; line-height: 1.6; }
-.tip-text strong { color: #3d2c00; }
-
-/* ── TIPS SECTION ── */
-.tips-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
-  margin-top: 8px;
-}
-.tip-card {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 22px 20px;
-  transition: box-shadow 0.2s;
-}
-.tip-card:hover { box-shadow: 0 4px 16px rgba(11,44,74,0.08); }
-.tip-card-icon { font-size: 28px; margin-bottom: 12px; }
-.tip-card h3 {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--navy);
-  margin-bottom: 8px;
-}
-.tip-card ul {
-  list-style: none;
-  padding: 0;
-}
-.tip-card ul li {
-  font-size: 13px;
-  color: var(--muted);
-  padding: 4px 0 4px 16px;
-  position: relative;
-  line-height: 1.5;
-}
-.tip-card ul li::before {
-  content: '›';
-  position: absolute; left: 0;
-  color: var(--sky);
-  font-weight: 700;
-}
-
-/* ── PANEL ── */
-.panel { display: none; }
-.panel.active { display: block; }
-
-/* ── PROGRESS ── */
-.progress-bar-wrap {
-  background: var(--line);
-  border-radius: 99px;
-  height: 4px;
   margin-bottom: 28px;
-  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, var(--sky), var(--gold));
-  border-radius: 99px;
-  transition: width 0.4s;
+.cover-tag::before, .cover-tag::after {
+  content: '';
+  width: 40px; height: 1px;
+  background: var(--sky);
+  opacity: 0.5;
 }
-
-/* ── PRINT ── */
-.print-btn {
+.cover h1 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 7vw, 62px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 16px;
+  position: relative;
+}
+.cover h1 em {
+  font-style: italic;
+  color: #90c4f5;
+}
+.cover-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.55);
+  font-weight: 300;
+  margin-bottom: 48px;
+  position: relative;
+}
+.cover-cards {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 56px;
+}
+.cover-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  padding: 14px 22px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cover-card span { font-size: 18px; }
+.cover-cta {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 22px;
-  background: var(--navy);
+  padding: 14px 32px;
+  background: var(--sky);
   color: var(--white);
-  border: none;
   border-radius: 6px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
   text-decoration: none;
-  transition: background 0.2s;
-  margin-bottom: 32px;
+  position: relative;
+  transition: background 0.2s, transform 0.15s;
+  cursor: pointer;
+  border: none;
 }
-.print-btn:hover { background: var(--blue); }
+.cover-cta:hover { background: #2a7dd4; transform: translateY(-1px); }
 
-.section-panel { display: none; }
-.section-panel.active { display: block; }
+/* ─── NAV ─── */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(255,255,255,0.97);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 16px rgba(13,53,88,0.08);
+}
+.nav-inner {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-btn {
+  flex-shrink: 0;
+  padding: 14px 14px;
+  border: none;
+  background: none;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.nav-btn:hover { color: var(--blue); }
+.nav-btn.active { color: var(--blue); border-bottom-color: var(--sky); font-weight: 600; }
+.nav-day {
+  font-size: 10px;
+  font-weight: 700;
+  background: var(--ice);
+  color: var(--blue);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.nav-btn.active .nav-day { background: var(--sky); color: white; }
 
-@media print {
-  .tabs-wrap, .print-btn, .hero-stats { display: none !important; }
-  .card-answer { display: block !important; }
-  .card { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; }
-  body { background: white; }
+/* ─── MAIN ─── */
+.main {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 20px 100px;
+}
+
+/* ─── SECTION ─── */
+.section { display: none; padding-top: 48px; }
+.section.active { display: block; }
+
+/* ─── DAY HEADER ─── */
+.day-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 36px;
+}
+.day-badge {
+  flex-shrink: 0;
+  width: 72px; height: 72px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  line-height: 1;
+}
+.day-badge .num { font-size: 28px; }
+.day-badge .lbl { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.85; }
+.day-meta { flex: 1; }
+.day-meta h2 {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+.day-meta .day-desc {
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 400;
+}
+.day-motto {
+  background: var(--navy);
+  color: white;
+  padding: 16px 22px;
+  border-radius: 10px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  margin-bottom: 32px;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 48px;
+}
+.day-motto::before {
+  content: '"';
+  position: absolute;
+  left: 16px; top: 8px;
+  font-size: 48px;
+  color: var(--sky);
+  opacity: 0.6;
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+/* ─── CONTENT BLOCKS ─── */
+.block { margin-bottom: 28px; }
+.block-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.block-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* Info card */
+.info-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px 22px;
+  margin-bottom: 12px;
+}
+.info-card p { font-size: 14px; color: #2a3d52; line-height: 1.8; }
+.info-card ul { list-style: none; padding: 0; }
+.info-card ul li {
+  font-size: 14px;
+  color: #2a3d52;
+  padding: 6px 0 6px 20px;
+  position: relative;
+  border-bottom: 1px solid #f0f6ff;
+  line-height: 1.6;
+}
+.info-card ul li:last-child { border-bottom: none; }
+.info-card ul li::before {
+  content: '›';
+  position: absolute; left: 0;
+  color: var(--sky);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Flow diagram */
+.flow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 16px 0;
+}
+.flow-step {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.flow-box {
+  background: var(--ice);
+  border: 1.5px solid var(--sky);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--navy);
+  text-align: center;
+  min-width: 100px;
+}
+.flow-box.highlight { background: var(--sky); color: white; border-color: var(--sky); }
+.flow-arrow {
+  font-size: 18px;
+  color: var(--sky);
+  padding: 0 6px;
+  font-weight: 700;
+}
+
+/* ─── SITUATION CARD ─── */
+.sit-card {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 1px solid var(--line);
+}
+.sit-header {
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: filter 0.15s;
+}
+.sit-header:hover { filter: brightness(0.97); }
+.sit-icon { font-size: 22px; flex-shrink: 0; }
+.sit-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.sit-title { font-size: 14px; font-weight: 600; flex: 1; line-height: 1.4; }
+.sit-toggle {
+  font-size: 18px;
+  transition: transform 0.25s;
+  flex-shrink: 0;
+  color: var(--muted);
+}
+.sit-card.open .sit-toggle { transform: rotate(180deg); }
+
+.sit-body {
+  display: none;
+  background: var(--white);
+  padding: 20px 22px;
+  border-top: 1px solid var(--line);
+}
+.sit-card.open .sit-body { display: block; }
+
+.sit-scene {
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  background: var(--pale);
+  border-radius: 6px;
+  border-left: 3px solid var(--muted);
+  line-height: 1.6;
+}
+
+/* Chat bubbles */
+.chat { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+.bubble-wrap { display: flex; align-items: flex-end; gap: 8px; }
+.bubble-wrap.them { flex-direction: row; }
+.bubble-wrap.you { flex-direction: row-reverse; }
+.bubble-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.bubble {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+.bubble-wrap.them .bubble {
+  background: #f0f4f8;
+  color: var(--ink);
+  border-bottom-left-radius: 4px;
+}
+.bubble-wrap.you .bubble {
+  background: var(--sky);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+.bubble-wrap.you .bubble strong { color: #d4edff; }
+.bubble-name {
+  font-size: 10px;
+  color: var(--muted);
+  margin-bottom: 3px;
+  padding: 0 4px;
+}
+.bubble-wrap.you .bubble-name { text-align: right; }
+
+.sit-result {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-top: 4px;
+}
+.sit-result.good { background: var(--green-bg); color: var(--green); }
+.sit-result.warn { background: var(--gold-bg); color: #7a5500; }
+.sit-result.bad  { background: var(--red-bg);  color: var(--red); }
+.sit-result-icon { font-size: 18px; flex-shrink: 0; }
+
+/* ─── CHECKLIST ─── */
+.checklist { list-style: none; padding: 0; }
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.5;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.checklist li:hover { background: var(--pale); }
+.checklist li.checked { background: var(--green-bg); border-color: #a8d8bc; }
+.checklist li.checked .check-box { background: var(--green); border-color: var(--green); color: white; }
+.check-box {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  border: 2px solid var(--line);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  margin-top: 1px;
+  transition: all 0.15s;
+}
+.checklist li.checked .check-text { color: var(--green); font-weight: 500; }
+
+/* ─── ENGLISH CARD ─── */
+.eng-table { width: 100%; border-collapse: collapse; }
+.eng-table th {
+  background: var(--navy);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 12px 16px;
+  text-align: left;
+}
+.eng-table th:first-child { border-radius: 8px 0 0 0; }
+.eng-table th:last-child { border-radius: 0 8px 0 0; }
+.eng-table td {
+  padding: 12px 16px;
+  font-size: 13.5px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  line-height: 1.6;
+}
+.eng-table tr:last-child td { border-bottom: none; }
+.eng-table tr:nth-child(even) td { background: var(--pale); }
+.eng-table .vi { color: var(--muted); font-size: 12px; font-style: italic; margin-top: 2px; }
+.eng-en { font-weight: 600; color: var(--blue); font-size: 14px; }
+.eng-pronoun { font-size: 11px; color: var(--muted); margin-top: 2px; font-style: italic; }
+
+/* ─── HIGHLIGHT BOX ─── */
+.hl-box {
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.hl-box.blue  { background: var(--ice); border-left: 4px solid var(--sky); }
+.hl-box.gold  { background: var(--gold-bg); border-left: 4px solid var(--gold); }
+.hl-box.green { background: var(--green-bg); border-left: 4px solid var(--green); }
+.hl-box.red   { background: var(--red-bg); border-left: 4px solid var(--red); }
+.hl-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+.hl-content { flex: 1; }
+.hl-content strong { display: block; font-size: 13px; font-weight: 700; margin-bottom: 4px; color: var(--ink); }
+.hl-content p, .hl-content li { font-size: 13.5px; line-height: 1.7; color: #2a3d52; }
+.hl-content ul { list-style: none; padding: 0; }
+.hl-content ul li { padding-left: 16px; position: relative; }
+.hl-content ul li::before { content: '•'; position: absolute; left: 0; color: var(--sky); font-weight: 700; }
+
+/* ─── MINDSET CARD ─── */
+.mindset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.mindset-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px 16px;
+  text-align: center;
+  transition: box-shadow 0.2s, transform 0.15s;
+}
+.mindset-card:hover { box-shadow: 0 4px 16px rgba(13,53,88,0.1); transform: translateY(-2px); }
+.mindset-icon { font-size: 32px; margin-bottom: 10px; }
+.mindset-title { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.mindset-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+/* ─── PROGRESS ─── */
+.progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+  padding: 14px 18px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.progress-label { font-size: 12px; font-weight: 600; color: var(--blue); flex-shrink: 0; }
+.progress-bar-bg { flex: 1; background: var(--ice); height: 8px; border-radius: 99px; overflow: hidden; }
+.progress-bar-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--sky), var(--blue)); transition: width 0.5s; }
+.progress-pct { font-size: 12px; font-weight: 700; color: var(--blue); flex-shrink: 0; }
+
+/* ─── DAY COLORS ─── */
+.d1 .day-badge { background: #e8f2ff; color: #1260a8; }
+.d2 .day-badge { background: #fff3e0; color: #c66a00; }
+.d3 .day-badge { background: #e8f6ef; color: #1e7c52; }
+.d4 .day-badge { background: #f3e5f5; color: #6a1b9a; }
+.d5 .day-badge { background: #fdeaea; color: #b83232; }
+.d6 .day-badge { background: #e0f4ff; color: #0277bd; }
+
+.sit-card.s-warn .sit-header { background: var(--gold-bg); }
+.sit-card.s-warn .sit-label { background: #f5e6b8; color: #7a5500; }
+.sit-card.s-green .sit-header { background: var(--green-bg); }
+.sit-card.s-green .sit-label { background: #b8dfc8; color: #145c3a; }
+.sit-card.s-red .sit-header { background: var(--red-bg); }
+.sit-card.s-red .sit-label { background: #f5b8b8; color: #7a1010; }
+.sit-card.s-blue .sit-header { background: var(--ice); }
+.sit-card.s-blue .sit-label { background: #b8d8f5; color: #0d3558; }
+
+/* ─── FOOTER ─── */
+.page-footer {
+  text-align: center;
+  padding: 32px 20px;
+  font-size: 12px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  max-width: 820px;
+  margin: 0 auto;
 }
 
 @media (max-width: 600px) {
-  .hero { padding: 40px 20px 36px; }
-  .hero-stats { gap: 24px; }
-  .main { padding: 28px 16px 60px; }
-  .card-answer { padding-left: 24px; }
-  .tab { font-size: 11px; padding: 14px 8px; }
+  .cover h1 { font-size: 32px; }
+  .day-header { flex-direction: column; gap: 12px; }
+  .flow { flex-direction: column; align-items: flex-start; }
+  .flow-arrow { transform: rotate(90deg); }
 }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-badge">Bệnh viện Quốc tế Vinmec</div>
-  <h1>Kịch Bản Phỏng Vấn<br><em>Vị trí Thu Ngân</em></h1>
-  <p>Câu hỏi · Câu trả lời mẫu · Mẹo ứng biến chuyên nghiệp</p>
-  <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-num">12</div>
-      <div class="stat-label">Câu hỏi</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">6</div>
-      <div class="stat-label">Chủ đề</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">100%</div>
-      <div class="stat-label">Thực chiến</div>
-    </div>
+<!-- ═══ COVER ═══ -->
+<div class="cover" id="top">
+  <div class="cover-grid"></div>
+  <div class="cover-glow"></div>
+  <div class="cover-tag">Bệnh viện Quốc tế Vinmec</div>
+  <h1>Cẩm Nang<br><em>6 Ngày Đầu</em></h1>
+  <p class="cover-sub">Hướng dẫn thực chiến · Tình huống cụ thể · Cách xử lý chuẩn</p>
+  <div class="cover-cards">
+    <div class="cover-card"><span>💼</span> Thu ngân · Hồ sơ bảo hiểm</div>
+    <div class="cover-card"><span>⚡</span> 6 ngày · 6 trọng tâm</div>
+    <div class="cover-card"><span>🎯</span> Thực chiến ngay từ ngày 1</div>
+  </div>
+  <button class="cover-cta" onclick="document.querySelector('.sticky-nav').scrollIntoView({behavior:'smooth'})">
+    Bắt đầu đọc →
+  </button>
+</div>
+
+<!-- ═══ NAV ═══ -->
+<div class="sticky-nav">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showDay(0,this)"><span class="nav-day">N1</span> Bức tranh tổng thể</button>
+    <button class="nav-btn" onclick="showDay(1,this)"><span class="nav-day">N2</span> Xử lý bệnh nhân khó</button>
+    <button class="nav-btn" onclick="showDay(2,this)"><span class="nav-day">N3</span> Tiếng Anh sống còn</button>
+    <button class="nav-btn" onclick="showDay(3,this)"><span class="nav-day">N4</span> Tác phong Vinmec</button>
+    <button class="nav-btn" onclick="showDay(4,this)"><span class="nav-day">N5</span> Tư duy thử việc</button>
+    <button class="nav-btn" onclick="showDay(5,this)"><span class="nav-day">N6</span> Ngày cuối & Lên đường</button>
   </div>
 </div>
 
-<!-- TABS -->
-<div class="tabs-wrap">
-  <div class="tabs">
-    <button class="tab active" onclick="switchTab(0)"><span class="tab-dot"></span>Mở đầu</button>
-    <button class="tab" onclick="switchTab(1)">Kỹ năng nghề</button>
-    <button class="tab" onclick="switchTab(2)">Ứng biến</button>
-    <button class="tab" onclick="switchTab(3)">Đổi ca & Áp lực</button>
-    <button class="tab" onclick="switchTab(4)">Kết thúc</button>
-    <button class="tab" onclick="switchTab(5)"><span class="tab-dot" style="background:#e74c3c"></span>Hỏi ngược NTD</button>
-  </div>
-</div>
-
-<!-- MAIN -->
+<!-- ═══ MAIN ═══ -->
 <div class="main">
 
-  <button class="print-btn" onclick="window.print()">🖨 In / Lưu PDF</button>
-
-  <!-- ─── PANEL 0: Mở đầu ─── -->
-  <div class="section-panel active" id="panel-0">
-    <div class="section-intro">
-      <div class="section-intro-icon">👋</div>
-      <div>
-        <h2>Câu hỏi mở đầu</h2>
-        <p>Phần tạo ấn tượng đầu tiên — thể hiện sự tự tin, chuyên nghiệp và mong muốn gắn bó với Vinmec.</p>
-      </div>
+<!-- ══════════════════════════════════
+     NGÀY 1
+══════════════════════════════════ -->
+<div class="section d1 active" id="day-0">
+  <div class="day-header">
+    <div class="day-badge"><div class="num">1</div><div class="lbl">Ngày</div></div>
+    <div class="day-meta">
+      <h2>Hiểu bức tranh tổng thể</h2>
+      <div class="day-desc">Biết mình đứng ở đâu trong quy trình — không bỡ ngỡ ngày đầu</div>
     </div>
+  </div>
+  <div class="day-motto">Không cần biết hết mọi thứ. Chỉ cần biết mình là mắt xích nào, và mắt xích bên cạnh là ai.</div>
 
-    <div class="card open">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="q-number">1</div>
-        <div class="q-meta">
-          <div class="q-tag tag-opening">Mở đầu</div>
-          <div class="q-text">Bạn có thể tự giới thiệu về bản thân không?</div>
-        </div>
-        <button class="toggle-btn">▾</button>
-      </div>
-      <div class="card-answer">
-        <div class="answer-block">
-          <div class="answer-text">
-            "Dạ thưa anh/chị, em tên là <strong>[Họ và tên]</strong>. Em có hơn <strong>5 năm kinh nghiệm</strong> làm việc trong lĩnh vực thu ngân và chăm sóc khách hàng — cụ thể là tại một quầy thuốc tư nhân từ năm 2018 đến 2023, nơi em trực tiếp vận hành máy POS, xử lý thanh toán và quản lý hóa đơn hằng ngày.<br><br>
-            Gần đây em đang công tác tại trường mầm non T-School với vai trò chăm sóc khách hàng, giúp em hoàn thiện thêm kỹ năng giao tiếp và xử lý tình huống trong môi trường dịch vụ cao cấp.<br><br>
-            Em biết đến Vinmec qua uy tín về chất lượng dịch vụ quốc tế, và em thực sự mong muốn được đóng góp năng lực của mình vào một môi trường chuyên nghiệp như thế này."
-          </div>
-        </div>
-        <div class="tip-box">
-          <div class="tip-icon">💡</div>
-          <div class="tip-text"><strong>Mẹo:</strong> Nói trong khoảng 1.5–2 phút. Duy trì giao tiếp mắt, giọng rõ ràng, không đọc thuộc lòng.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="q-number">2</div>
-        <div class="q-meta">
-          <div class="q-tag tag-opening">Mở đầu</div>
-          <div class="q-text">Tại sao bạn muốn ứng tuyển vào Vinmec thay vì các bệnh viện khác?</div>
-        </div>
-        <button class="toggle-btn">▾</button>
-      </div>
-      <div class="card-answer">
-        <div class="answer-block">
-          <div class="answer-text">
-            "Dạ, với em đây không đơn giản là một công việc — mà là một môi trường để <strong>phát triển nghề nghiệp lâu dài</strong>. Vinmec là bệnh viện quốc tế với chuẩn mực dịch vụ rất cao, nơi mà mỗi nhân viên — kể cả thu ngân — đều đại diện cho hình ảnh của toàn bệnh viện trước mắt bệnh nhân.<br><br>
-            Em đánh giá cao điều đó vì bản thân em luôn xem <strong>trách nhiệm và thái độ phục vụ</strong> là hai yếu tố quan trọng nhất trong công việc. Em tin rằng môi trường Vinmec sẽ giúp em phát huy đúng những điểm mạnh đó."
-          </div>
-        </div>
-        <div class="tip-box">
-          <div class="tip-icon">💡</div>
-          <div class="tip-text"><strong>Mẹo:</strong> Tránh nói lý do như "lương cao" hay "gần nhà" — hãy tập trung vào giá trị và văn hóa của Vinmec.</div>
-        </div>
+  <div class="block">
+    <div class="block-title">🏥 Hành trình của bệnh nhân tại Vinmec</div>
+    <div class="info-card">
+      <p style="margin-bottom:14px">Mỗi bệnh nhân đi qua các bước sau — <strong>em là người họ gặp ở bước cuối cùng</strong>, nhưng quan trọng nhất vì đây là lúc họ trả tiền và ra về:</p>
+      <div class="flow">
+        <div class="flow-step"><div class="flow-box">📋 Đăng ký</div><div class="flow-arrow">›</div></div>
+        <div class="flow-step"><div class="flow-box">🩺 Khám bác sĩ</div><div class="flow-arrow">›</div></div>
+        <div class="flow-step"><div class="flow-box">🧪 Xét nghiệm / CĐHA</div><div class="flow-arrow">›</div></div>
+        <div class="flow-step"><div class="flow-box highlight">💳 Thanh toán</div><div class="flow-arrow">›</div></div>
+        <div class="flow-step"><div class="flow-box">🚪 Ra về</div></div>
       </div>
     </div>
   </div>
 
-  <!-- ─── PANEL 1: Kỹ năng nghề ─── -->
-  <div class="section-panel" id="panel-1">
-    <div class="section-intro">
-      <div class="section-intro-icon">💼</div>
-      <div>
-        <h2>Kỹ năng chuyên môn & nghề nghiệp</h2>
-        <p>Chứng minh năng lực thực chiến — thành thạo quy trình, cẩn thận, trung thực.</p>
+  <div class="block">
+    <div class="block-title">🤝 Em phối hợp với ai?</div>
+    <div class="info-card">
+      <ul>
+        <li><strong>Khoa lâm sàng</strong> — xác nhận chỉ định dịch vụ, danh sách thuốc</li>
+        <li><strong>Phòng bảo hiểm</strong> — xác nhận BHYT, bảo hiểm thương mại, hồ sơ hoàn tiền</li>
+        <li><strong>Kế toán / Trưởng ca</strong> — đối soát quỹ, xử lý sai lệch, báo cáo cuối ca</li>
+        <li><strong>CSKH</strong> — tiếp nhận phàn nàn khi vượt quá thẩm quyền của em</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-title">📌 Điểm khác biệt Vinmec vs bệnh viện thường</div>
+    <div class="hl-box blue">
+      <div class="hl-icon">🌐</div>
+      <div class="hl-content">
+        <strong>Bệnh nhân quốc tế</strong>
+        <p>Vinmec có bệnh nhân nước ngoài — cần giao tiếp tiếng Anh cơ bản. Không cần giỏi, chỉ cần đủ để hướng dẫn và hỏi thông tin.</p>
       </div>
     </div>
-
-    <div class="card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="q-number">3</div>
-        <div class="q-meta">
-          <div class="q-tag tag-skill">Chuyên môn</div>
-          <div class="q-text">Bạn có kinh nghiệm sử dụng phần mềm thu ngân hoặc HIS bệnh viện chưa?</div>
-        </div>
-        <button class="toggle-btn">▾</button>
-      </div>
-      <div class="card-answer">
-        <div class="answer-block">
-          <div class="answer-text">
-            "Dạ, em đã có kinh nghiệm sử dụng <strong>phần mềm Webnhathuoc</strong> trong suốt 5 năm làm tại quầy thuốc — bao gồm nhập xuất hàng, xuất hóa đơn, đối soát doanh thu và quản lý thanh toán hằng ngày.<br><br>
-            Em cũng thành thạo thao tác <strong>máy POS, thanh toán tiền mặt lẫn chuyển khoản</strong>, và sử dụng Excel để theo dõi số liệu cuối ca.<br><br>
-            Về phần mềm HIS chuyên biệt của bệnh viện, em chưa có điều kiện tiếp cận, nhưng với nền tảng đã có, em <strong>tự tin có thể làm quen nhanh</strong> — em vốn tiếp thu phần mềm mới khá nhanh và không ngại học hỏi thêm."
-          </div>
-        </div>
-        <div class="tip-box">
-          <div class="tip-icon">💡</div>
-          <div class="tip-text"><strong>Mẹo:</strong> Thừa nhận điểm chưa có nhưng ngay lập tức thể hiện sự sẵn sàng học. Không nói "em không biết" và dừng lại ở đó.</div>
-        </div>
+    <div class="hl-box gold">
+      <div class="hl-icon">📋</div>
+      <div class="hl-content">
+        <strong>Bảo hiểm thương mại phức tạp hơn</strong>
+        <p>Ngoài BHYT nhà nước, còn có bảo hiểm Bảo Việt, AIA, Manulife... mỗi loại có quy trình xác nhận khác nhau. Ngày đầu cứ hỏi anh/chị khi gặp loại mới.</p>
       </div>
     </div>
-
-    <div class="card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="q-number">4</div>
-        <div class="q-meta">
-          <div class="q-tag tag-skill">Chuyên môn</div>
-          <div class="q-text">Bạn xử lý như thế nào khi phát hiện sai lệch tiền quỹ cuối ca?</div>
-        </div>
-        <button class="toggle-btn">▾</button>
-      </div>
-      <div class="card-answer">
-        <div class="answer-block">
-          <div class="answer-text">
-            "Dạ, khi phát hiện sai lệch quỹ, bước đầu tiên em sẽ <strong>không vội báo cáo ngay</strong> mà kiểm tra lại toàn bộ giao dịch trong ca — đối chiếu phiếu thu, hóa đơn và lịch sử máy POS từng bước một để xác định chính xác điểm sai lệch xảy ra ở đâu.<br><br>
-            Nếu sau khi kiểm tra kỹ vẫn không khớp, em sẽ <strong>báo cáo ngay cho quản lý trực tiếp</strong> — không tự ý xử lý hoặc che giấu, dù chênh lệch lớn hay nhỏ. Với em, <strong>tính trung thực là không thể thỏa hiệp</strong> trong vị trí thu ngân.<br><br>
-            Trong 5 năm làm quầy thuốc, em luôn duy trì thói quen kiểm đếm kỹ trước và sau ca, và chưa để xảy ra sai lệch không giải thích được."
-          </div>
-        </div>
-        <div class="tip-box">
-          <div class="tip-icon">💡</div>
-          <div class="tip-text"><strong>Mẹo:</strong> Đây là câu hỏi test sự trung thực. Hãy nói rõ quy trình và nhấn mạnh việc báo cáo cấp trên — tuyệt đối không nói "em tự bù vào".</div>
-        </div>
+    <div class="hl-box green">
+      <div class="hl-icon">⭐</div>
+      <div class="hl-content">
+        <strong>Chuẩn dịch vụ cao hơn</strong>
+        <p>Nụ cười, lời cảm ơn, không để bệnh nhân chờ mà không báo — đây là tiêu chuẩn tối thiểu, không phải ngoại lệ.</p>
       </div>
     </div>
   </div>
 
-  <!-- ─── PANEL 2: Ứng biến ─── -->
-  <div class="section-panel" id="panel-2">
-    <div class="section-intro">
-      <div class="section-intro-icon">⚡</div>
-      <div>
-        <h2>Ứng biến & Xử lý tình huống</h2>
-        <p>Phần quan trọng nhất — chứng minh bản lĩnh, linh hoạt và đầu óc bình tĩnh khi gặp áp lực.</p>
-      </div>
-    </div>
+  <div class="block">
+    <div class="block-title">✅ Việc cần làm Ngày 1</div>
+    <ul class="checklist">
+      <li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><span class="check-text">Quan sát toàn bộ không gian — quầy thu ngân, quầy bảo hiểm, lối đi bệnh nhân</span></li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><span class="check-text">Hỏi anh/chị hướng dẫn tên của từng bộ phận xung quanh</span></li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><span class="check-text">Xin số điện thoại nội bộ của trưởng ca và bộ phận CSKH</span></li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><span class="check-text">Mang sổ tay — ghi lại mọi thứ được hướng dẫn trong ngày</span></li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><span class="check-text">Chưa cần làm một mình — quan sát và hỏi là đủ</span></li>
+    </ul>
+  </div>
+</div>
 
-    <div class="card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="q-number">5</div>
-        <div class="q-meta">
-          <div class="q-tag tag-adapt">Ứng biến</div>
-          <div class="q-text">Nếu bệnh nhân phàn nàn về hóa đơn không chính xác và trở nên bức xúc, bạn xử lý như thế nào?</div>
-        </div>
-        <button class="toggle-btn">▾</button>
-      </div>
-      <div class="card-answer">
-        <div class="answer-block">
-          <div class="answer-text">
-            "Dạ, trước tiên em sẽ <strong>giữ thái độ bình tĩnh và lắng nghe trọn vẹn</strong> — không ngắt lời, không bào chữa ngay. Bệnh nhân vào bệnh viện thường đang trong trạng thái lo lắng, nên sự bức xúc phần lớn xuất phát từ áp lực tâm lý, không hẳn là nhắm vào cá nhân mình.<br><br>
-            Sau khi nghe xong, em sẽ <strong>xin lỗi vì sự bất tiện</strong> — không phải nhận sai ngay — rồi yêu cầu được xem lại hóa đơn để kiểm tra cùng bệnh nhân. Nếu đúng là có sai sót, em xử lý điều chỉnh ngay và giải thích rõ ràng. Nếu hóa đơn đúng, em kiên nhẫn giải thích từng khoản một theo cách dễ hiểu nhất.<br><br>
-            Trong trường hợp bệnh nhân vẫn chưa hài lòng sau khi em giải thích, em sẽ <strong>mời quản lý hoặc bộ phận hỗ trợ</strong> vào cuộc — không để tình huống leo thang và không để bệnh nhân phải chờ đợi lâu."
-          </div>
-        </div>
-        <div class="tip-box">
-          <div class="tip-icon">💡</div>
-          <div class="tip-text"><strong>Mẹo:</strong> Kể thêm một ví dụ thực tế tương tự từ quầy thuốc nếu được hỏi thêm — câu chuyện cụ thể sẽ tạo độ tin cậy cao hơn nhiều.</div>
-        </div>
-      </div>
-    </div>
 
-    <div class="card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="q-number">6</div>
-        <div class="q-meta">
-          <div class="q-tag tag-adapt">Ứng biến</div>
-          <div class="q-text">Hệ thống phần mềm bị lỗi giữa ca đông bệnh nhân — bạn làm gì?</div>
-        </div>
-        <button class="toggle-btn">▾</button>
-      </div>
-      <div class="card-answer">
-        <div class="answer-block">
-          <div class="answer-text">
-            "Dạ, tình huống này đòi hỏi <strong>phản xạ nhanh và ưu tiên giữ bình tĩnh</strong>. Em sẽ lập tức thông báo cho bộ phận kỹ thuật đồng thời báo quản lý ca.<br><br>
-            Trong thời gian chờ khắc phục, em sẽ chủ động <strong>ghi nhận thông tin bệnh nhân và số tiền cần thanh toán theo hình thức thủ công</strong> — sổ ghi chép hoặc phiếu tạm — để không để bệnh nhân phải chờ quá lâu mà vẫn đảm bảo không thất thoát dữ liệu.<br><br>
-            Em cũng sẽ <strong>thông báo lịch sự đến bệnh nhân đang chờ</strong> về sự cố và thời gian dự kiến xử lý — để họ có thể chủ động chờ hoặc quay lại sau. Quan trọng là không để người bệnh đứng chờ mà không biết chuyện gì đang xảy ra."
-          </div>
-        </div>
-        <div class="tip-box">
-          <div class="tip-icon">💡</div>
-          <div class="tip-text"><strong>Mẹo:</strong> Nhấn mạnh vào <strong>giao tiếp chủ động</strong> — cho bệnh nhân biết tình hình thay vì im lặng xử lý. Đây là tiêu chí dịch vụ của Vinmec.</div>
-        </div>
-      </div>
+<!-- ══════════════════════════════════
+     NGÀY 2
+══════════════════════════════════ -->
+<div class="section d2" id="day-1">
+  <div class="day-header">
+    <div class="day-badge"><div class="num">2</div><div class="lbl">Ngày</div></div>
+    <div class="day-meta">
+      <h2>Xử lý bệnh nhân khó</h2>
+      <div class="day-desc">Luyện phản xạ quan trọng nhất — bình tĩnh khi bị phàn nàn</div>
     </div>
+  </div>
+  <div class="day-motto">Bệnh nhân bức xúc không phải họ ghét em — họ đang sợ hãi hoặc đau đớn. Bình tĩnh của em là liều thuốc đầu tiên.</div>
 
-    <div class="card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="q-number">7</div>
-        <div class="q-meta">
-          <div class="q-tag tag-adapt">Ứng biến</div>
-          <div class="q-text">Bạn xử lý thế nào khi có nhiều bệnh nhân cùng lúc và người thì nói nhanh, người thì cao tuổi nói chậm?</div>
-        </div>
-        <button class="toggle-btn">▾</button>
+  <div class="block">
+    <div class="block-title">🧠 Nguyên tắc vàng — 3 bước không bao giờ sai</div>
+    <div class="mindset-grid">
+      <div class="mindset-card">
+        <div class="mindset-icon">👂</div>
+        <div class="mindset-title">1. Lắng nghe trọn vẹn</div>
+        <div class="mindset-desc">Không ngắt lời. Không bào chữa ngay. Để họ nói hết.</div>
       </div>
-      <div class="card-answer">
-        <div class="answer-block">
-          <div class="answer-text">
-            "Dạ, trong môi trường đông bệnh nhân, em luôn ưu tiên <strong>xử lý tuần tự và không để ai cảm thấy bị bỏ qua</strong>. Với từng bệnh nhân đang được phục vụ, em tập trung 100% — không để người sau làm mình vội vàng dẫn đến sai sót.<br><br>
-            Với bệnh nhân cao tuổi, em tự điều chỉnh <strong>tốc độ nói chậm hơn, giải thích rõ từng khoản</strong>, và kiên nhẫn hơn — vì một phút chậm lại với người cao tuổi sẽ tránh được rất nhiều phiền phức về sau.<br><br>
-            Với hàng đợi dài, em sẽ <strong>chủ động nói vài câu để trấn an</strong> những người đang chờ — thay vì im lặng. Ví dụ: 'Anh/chị vui lòng chờ em một chút, em sẽ phục vụ ngay ạ.' — chỉ vậy thôi cũng khiến người chờ cảm thấy được quan tâm."
-          </div>
-        </div>
-        <div class="tip-box">
-          <div class="tip-icon">💡</div>
-          <div class="tip-text"><strong>Mẹo:</strong> Câu này test sự đồng cảm — hãy thể hiện rằng bạn điều chỉnh cách giao tiếp <em>theo từng người</em>, không áp dụng một khuôn mẫu cho tất cả.</div>
-        </div>
+      <div class="mindset-card">
+        <div class="mindset-icon">🙏</div>
+        <div class="mindset-title">2. Xin lỗi vì bất tiện</div>
+        <div class="mindset-desc">Không nhận sai ngay — nhưng xin lỗi vì họ phải chờ / không thoải mái.</div>
+      </div>
+      <div class="mindset-card">
+        <div class="mindset-icon">🔍</div>
+        <div class="mindset-title">3. Kiểm tra & giải quyết</div>
+        <div class="mindset-desc">Xem lại hóa đơn cùng họ. Giải thích rõ. Nếu vượt thẩm quyền → mời quản lý.</div>
       </div>
     </div>
   </div>
 
-  <!-- ─── PANEL 3: Đổi ca & Áp lực ─── -->
-  <div class="section-panel" id="panel-3">
-    <div class="section-intro">
-      <div class="section-intro-icon">🔄</div>
-      <div>
-        <h2>Sẵn sàng đổi ca & Làm việc dưới áp lực</h2>
-        <p>Vinmec hoạt động 24/7 — đây là nhóm câu hỏi nhà tuyển dụng rất quan tâm.</p>
+  <div class="block">
+    <div class="block-title">🎭 Tình huống thực chiến</div>
+
+    <div class="sit-card s-warn open">
+      <div class="sit-header" onclick="toggleSit(this)">
+        <div class="sit-icon">😤</div>
+        <div class="sit-label">Hay gặp</div>
+        <div class="sit-title">Bệnh nhân nói hóa đơn cao hơn họ nghĩ</div>
+        <div class="sit-toggle">▾</div>
+      </div>
+      <div class="sit-body">
+        <div class="sit-scene">📍 Bệnh nhân nhận hóa đơn, nhìn vào tổng tiền, tỏ ra bất ngờ và bức xúc: "Sao nhiều vậy? Tôi chỉ khám thôi mà!"</div>
+        <div class="chat">
+          <div class="bubble-wrap them">
+            <div class="bubble-avatar">😤</div>
+            <div>
+              <div class="bubble-name">Bệnh nhân</div>
+              <div class="bubble">"Sao tôi chỉ khám một chút mà ra tới mấy triệu vậy? Bệnh viện này tính tiền kiểu gì?"</div>
+            </div>
+          </div>
+          <div class="bubble-wrap you">
+            <div>
+              <div class="bubble-name">Em trả lời</div>
+              <div class="bubble">"Dạ, em rất tiếc vì anh/chị phải bất ngờ như vậy. Anh/chị cho em xem lại hóa đơn cùng nhé — em sẽ giải thích từng khoản cho anh/chị rõ ạ."</div>
+            </div>
+            <div class="bubble-avatar">🙋</div>
+          </div>
+          <div class="bubble-wrap them">
+            <div class="bubble-avatar">😤</div>
+            <div>
+              <div class="bubble-name">Bệnh nhân</div>
+              <div class="bubble">"Ừ thì giải thích đi, tôi không hiểu khoản xét nghiệm máu sao tới 800 nghìn?"</div>
+            </div>
+          </div>
+          <div class="bubble-wrap you">
+            <div>
+              <div class="bubble-name">Em trả lời</div>
+              <div class="bubble">"Dạ khoản này là xét nghiệm công thức máu toàn phần do bác sĩ chỉ định ạ — gồm 18 chỉ số kiểm tra. Anh/chị có muốn em in phiếu chỉ định của bác sĩ để đối chiếu không ạ?"</div>
+            </div>
+            <div class="bubble-avatar">🙋</div>
+          </div>
+        </div>
+        <div class="sit-result good"><div class="sit-result-icon">✅</div><div>Giải thích cụ thể theo từng khoản + đề xuất giải pháp chủ động → bệnh nhân thường hài lòng và thanh toán.</div></div>
+        <div class="sit-result warn" style="margin-top:8px"><div class="sit-result-icon">⚠️</div><div><strong>Nếu bệnh nhân vẫn không chấp nhận:</strong> "Dạ, em sẽ mời anh/chị gặp trưởng ca để hỗ trợ thêm ạ." — Không cố thuyết phục mãi.</div></div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="q-number">8</div>
-        <div class="q-meta">
-          <div class="q-tag tag-shift">Đổi ca</div>
-          <div class="q-text">Bạn có sẵn sàng làm ca tối hoặc cuối tuần không?</div>
-        </div>
-        <button class="toggle-btn">▾</button>
+    <div class="sit-card s-red">
+      <div class="sit-header" onclick="toggleSit(this)">
+        <div class="sit-icon">😡</div>
+        <div class="sit-label">Khó xử lý</div>
+        <div class="sit-title">Bệnh nhân to tiếng, gây áp lực</div>
+        <div class="sit-toggle">▾</div>
       </div>
-      <div class="card-answer">
-        <div class="answer-block">
-          <div class="answer-text">
-            "Dạ, em <strong>hoàn toàn sẵn sàng</strong>. Em hiểu rằng bệnh viện hoạt động liên tục 24/7, và vị trí thu ngân đòi hỏi sự linh hoạt về thời gian là điều tất yếu.<br><br>
-            Em đã quen với nhịp làm việc có thể thay đổi từ thời gian ở quầy thuốc — có những ngày cuối tuần hoặc ngày lễ lượng khách đông đột biến, em vẫn hoàn thành tốt công việc mà không ảnh hưởng đến chất lượng phục vụ.<br><br>
-            Với em, <strong>sự linh hoạt là một phần của trách nhiệm</strong> — khi tổ chức cần, em sẵn sàng điều chỉnh lịch cá nhân để đảm bảo công việc vận hành trơn tru."
+      <div class="sit-body">
+        <div class="sit-scene">📍 Bệnh nhân mất kiên nhẫn sau khi chờ lâu, bắt đầu nói to và gây áp lực với em tại quầy.</div>
+        <div class="chat">
+          <div class="bubble-wrap them">
+            <div class="bubble-avatar">😡</div>
+            <div>
+              <div class="bubble-name">Bệnh nhân</div>
+              <div class="bubble">"Tôi chờ cả tiếng đồng hồ rồi! Các cô ở đây làm việc kiểu gì vậy?"</div>
+            </div>
+          </div>
+          <div class="bubble-wrap you">
+            <div>
+              <div class="bubble-name">Em — ĐÚNG cách</div>
+              <div class="bubble">"Dạ, em xin lỗi vì anh/chị phải chờ lâu. Em hiểu điều đó rất bất tiện. Anh/chị cho em tên và số phiếu — em xử lý ngay cho anh/chị ạ." <strong>(giọng thấp, bình tĩnh)</strong></div>
+            </div>
+            <div class="bubble-avatar">🙋</div>
           </div>
         </div>
-        <div class="tip-box">
-          <div class="tip-icon">💡</div>
-          <div class="tip-text"><strong>Mẹo:</strong> Nói thẳng và dứt khoát — "hoàn toàn sẵn sàng". Đừng thêm điều kiện như "nhưng nếu có thể thì..." vì sẽ tạo nghi ngờ.</div>
-        </div>
+        <div class="sit-result bad"><div class="sit-result-icon">❌</div><div><strong>Tuyệt đối không nói:</strong> "Thì anh/chị cũng phải chờ như người khác chứ" — dù trong bụng đang rất bực.</div></div>
+        <div class="sit-result good" style="margin-top:8px"><div class="sit-result-icon">✅</div><div><strong>Bí quyết:</strong> Giọng nói thấp hơn bình thường một chút. Khi em nói nhỏ và bình tĩnh, bệnh nhân thường tự hạ giọng theo.</div></div>
+        <div class="sit-result warn" style="margin-top:8px"><div class="sit-result-icon">⚠️</div><div>Nếu bệnh nhân tiếp tục mất kiểm soát → bấm gọi bảo vệ hoặc CSKH. Không để mình đối phó một mình quá lâu.</div></div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="q-number">9</div>
-        <div class="q-meta">
-          <div class="q-tag tag-shift">Đổi ca</div>
-          <div class="q-text">Nếu đồng nghiệp bệnh đột xuất và bạn được yêu cầu tăng ca gấp — bạn phản ứng thế nào?</div>
-        </div>
-        <button class="toggle-btn">▾</button>
+    <div class="sit-card s-green">
+      <div class="sit-header" onclick="toggleSit(this)">
+        <div class="sit-icon">📄</div>
+        <div class="sit-label">Hồ sơ bảo hiểm</div>
+        <div class="sit-title">Bệnh nhân thiếu giấy tờ bảo hiểm</div>
+        <div class="sit-toggle">▾</div>
       </div>
-      <div class="card-answer">
-        <div class="answer-block">
-          <div class="answer-text">
-            "Dạ, trong tình huống như vậy, câu trả lời đầu tiên của em luôn là <strong>'Được ạ, em sắp xếp ngay'</strong>.<br><br>
-            Em quan niệm rằng khi đã chọn làm việc trong môi trường y tế — nơi bệnh nhân cần được phục vụ liên tục — thì việc hỗ trợ đồng đội khi có sự cố là <strong>điều hiển nhiên chứ không phải ngoại lệ</strong>.<br><br>
-            Tất nhiên, nếu có tình huống cá nhân quan trọng không thể thay đổi, em sẽ báo cáo thành thật với quản lý để cùng tìm phương án thay thế — nhưng đó là trường hợp hiếm gặp. Thông thường, em luôn <strong>ưu tiên đảm bảo ca làm không bị gián đoạn</strong>."
+      <div class="sit-body">
+        <div class="sit-scene">📍 Bệnh nhân đến thanh toán, muốn dùng bảo hiểm thương mại (Bảo Việt) nhưng không mang theo thẻ và không biết số hợp đồng.</div>
+        <div class="chat">
+          <div class="bubble-wrap them">
+            <div class="bubble-avatar">🤷</div>
+            <div>
+              <div class="bubble-name">Bệnh nhân</div>
+              <div class="bubble">"Tôi có bảo hiểm Bảo Việt nhưng hôm nay quên thẻ. Vẫn được thanh toán bảo hiểm không?"</div>
+            </div>
+          </div>
+          <div class="bubble-wrap you">
+            <div>
+              <div class="bubble-name">Em trả lời</div>
+              <div class="bubble">"Dạ, em hiểu ạ. Anh/chị có thể kiểm tra app Bảo Việt trên điện thoại xem có số hợp đồng không ạ? Hoặc em có thể hỗ trợ anh/chị thanh toán trước, giữ lại hóa đơn để nộp hoàn tiền sau với công ty bảo hiểm ạ."</div>
+            </div>
+            <div class="bubble-avatar">🙋</div>
           </div>
         </div>
-        <div class="tip-box">
-          <div class="tip-icon">💡</div>
-          <div class="tip-text"><strong>Mẹo:</strong> Câu trả lời này thể hiện tinh thần đồng đội — điểm cộng rất lớn. Kết hợp bằng nụ cười tự nhiên khi nói sẽ tạo thiện cảm tốt.</div>
-        </div>
+        <div class="sit-result good"><div class="sit-result-icon">✅</div><div>Luôn đưa ra <strong>phương án thay thế</strong> — không chỉ nói "không được". Đề xuất thanh toán trước + hoàn tiền sau là giải pháp thực tế nhất.</div></div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="q-number">10</div>
-        <div class="q-meta">
-          <div class="q-tag tag-pro">Áp lực</div>
-          <div class="q-text">Điểm yếu lớn nhất của bạn là gì?</div>
-        </div>
-        <button class="toggle-btn">▾</button>
+    <div class="sit-card s-blue">
+      <div class="sit-header" onclick="toggleSit(this)">
+        <div class="sit-icon">💻</div>
+        <div class="sit-label">Sự cố kỹ thuật</div>
+        <div class="sit-title">Hệ thống bị lỗi giữa ca đông</div>
+        <div class="sit-toggle">▾</div>
       </div>
-      <div class="card-answer">
-        <div class="answer-block">
-          <div class="answer-text">
-            "Dạ, em nhận thấy điểm mình cần cải thiện nhất hiện tại là <strong>khả năng giao tiếp bằng tiếng Anh</strong>. Vốn từ vựng chuyên ngành của em còn hạn chế, và em chưa tự tin khi cần trao đổi trực tiếp với bệnh nhân nước ngoài.<br><br>
-            Tuy nhiên, em đang <strong>chủ động học khắc phục</strong> — cụ thể em đang ôn luyện tiếng Anh giao tiếp cơ bản và các mẫu câu thường dùng trong môi trường bệnh viện như hướng dẫn thanh toán, giải thích hóa đơn hay xác nhận thông tin bệnh nhân.<br><br>
-            Em tin rằng với môi trường làm việc thực tế tại Vinmec và sự nỗ lực của bản thân, <strong>em hoàn toàn có thể cải thiện trong thời gian ngắn</strong> để đáp ứng yêu cầu giao tiếp cơ bản với bệnh nhân quốc tế."
+      <div class="sit-body">
+        <div class="sit-scene">📍 Phần mềm HIS đột ngột không vào được. Có 5 bệnh nhân đang chờ tại quầy.</div>
+        <div class="chat">
+          <div class="bubble-wrap you">
+            <div>
+              <div class="bubble-name">Em làm ngay — bước 1</div>
+              <div class="bubble">Gọi ngay cho bộ phận IT nội bộ và báo trưởng ca. <strong>Không tự ngồi mày mò sửa.</strong></div>
+            </div>
+            <div class="bubble-avatar">📞</div>
+          </div>
+          <div class="bubble-wrap you">
+            <div>
+              <div class="bubble-name">Em làm ngay — bước 2</div>
+              <div class="bubble">Quay ra nói với bệnh nhân đang chờ: <em>"Dạ, hệ thống đang gặp sự cố kỹ thuật, bộ phận IT đang xử lý. Anh/chị vui lòng chờ khoảng 5–10 phút, em xin lỗi vì sự bất tiện ạ."</em></div>
+            </div>
+            <div class="bubble-avatar">🙋</div>
+          </div>
+          <div class="bubble-wrap you">
+            <div>
+              <div class="bubble-name">Em làm ngay — bước 3</div>
+              <div class="bubble">Ghi tay tên + số phiếu của từng bệnh nhân đang chờ để giữ thứ tự. <strong>Không để mất thứ tự khi hệ thống trở lại.</strong></div>
+            </div>
+            <div class="bubble-avatar">📝</div>
           </div>
         </div>
-        <div class="tip-box">
-          <div class="tip-icon">💡</div>
-          <div class="tip-text"><strong>Mẹo:</strong> Thừa nhận thẳng thắn — không vòng vo. Điều quan trọng là ngay lập tức cho thấy bạn <em>đang hành động để cải thiện</em>, không chỉ nhận ra vấn đề. Vinmec đánh giá cao thái độ cầu tiến.</div>
+        <div class="sit-result good"><div class="sit-result-icon">✅</div><div><strong>Nguyên tắc:</strong> Thông báo chủ động cho bệnh nhân, giữ thứ tự, báo cấp trên. Ba việc này làm đúng là xử lý tốt rồi.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     NGÀY 3
+══════════════════════════════════ -->
+<div class="section d3" id="day-2">
+  <div class="day-header">
+    <div class="day-badge"><div class="num">3</div><div class="lbl">Ngày</div></div>
+    <div class="day-meta">
+      <h2>5 Câu Tiếng Anh Sống Còn</h2>
+      <div class="day-desc">Không cần học nhiều — chỉ cần thuộc 5 câu này thật nhuần nhuyễn</div>
+    </div>
+  </div>
+  <div class="day-motto">Bệnh nhân nước ngoài không cần em nói tiếng Anh hoàn hảo. Họ chỉ cần thấy em đang cố gắng giúp họ.</div>
+
+  <div class="block">
+    <div class="block-title">🗣️ 5 câu cần thuộc lòng</div>
+    <div class="info-card" style="padding:0; overflow:hidden;">
+      <table class="eng-table">
+        <tr>
+          <th style="width:36%">Tình huống</th>
+          <th>Câu nói</th>
+        </tr>
+        <tr>
+          <td><strong>Chào & mời lại gần</strong></td>
+          <td>
+            <div class="eng-en">"Please come this way, I'll help you."</div>
+            <div class="eng-pronoun">Pliz-kăm-đis-wây, ai-uil-help-diu</div>
+            <div class="vi">Mời anh/chị lại đây, em sẽ hỗ trợ ạ.</div>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Hỏi tên & giấy tờ</strong></td>
+          <td>
+            <div class="eng-en">"Could I have your name and ID card, please?"</div>
+            <div class="eng-pronoun">Cúd-ai-hav-yo-nêm-en-ai-di-kard-pliz</div>
+            <div class="vi">Cho em xin tên và giấy tờ tùy thân ạ.</div>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Yêu cầu chờ</strong></td>
+          <td>
+            <div class="eng-en">"Please wait a moment, I'll check for you."</div>
+            <div class="eng-pronoun">Pliz-wêt-ơ-mô-mần, ai-uil-chek-fo-diu</div>
+            <div class="vi">Anh/chị vui lòng chờ em kiểm tra nhé.</div>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Thông báo tổng tiền</strong></td>
+          <td>
+            <div class="eng-en">"Your total is ___ Vietnamese dong."</div>
+            <div class="eng-pronoun">Yo-tô-tồl-iz-___-vi-ét-na-miz-đong</div>
+            <div class="vi">Tổng tiền của anh/chị là ___ đồng.</div>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Khi không hiểu</strong></td>
+          <td>
+            <div class="eng-en">"I'm sorry, could you say that again slowly?"</div>
+            <div class="eng-pronoun">Ai'm-so-ri, cúd-diu-sây-đát-ơ-gen-slou-li</div>
+            <div class="vi">Xin lỗi, anh/chị có thể nói chậm lại không ạ?</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-title">🎭 Tình huống tiếng Anh thực tế</div>
+    <div class="sit-card s-blue open">
+      <div class="sit-header" onclick="toggleSit(this)">
+        <div class="sit-icon">🌍</div>
+        <div class="sit-label">Bệnh nhân nước ngoài</div>
+        <div class="sit-title">Bệnh nhân nước ngoài đến thanh toán, không biết tiếng Việt</div>
+        <div class="sit-toggle">▾</div>
+      </div>
+      <div class="sit-body">
+        <div class="sit-scene">📍 Một bệnh nhân người nước ngoài bước đến quầy, cầm phiếu khám và nhìn em chờ đợi.</div>
+        <div class="chat">
+          <div class="bubble-wrap you">
+            <div>
+              <div class="bubble-name">Em — mỉm cười và nói</div>
+              <div class="bubble">"Please come this way, I'll help you." <strong>(gật đầu, ra hiệu mời ngồi)</strong></div>
+            </div>
+            <div class="bubble-avatar">🙋</div>
+          </div>
+          <div class="bubble-wrap them">
+            <div class="bubble-avatar">🌍</div>
+            <div>
+              <div class="bubble-name">Bệnh nhân</div>
+              <div class="bubble">"Hi, I need to pay for my consultation today."</div>
+            </div>
+          </div>
+          <div class="bubble-wrap you">
+            <div>
+              <div class="bubble-name">Em</div>
+              <div class="bubble">"Could I have your name and ID card, please?" <strong>(chỉ vào phiếu khám để họ hiểu)</strong></div>
+            </div>
+            <div class="bubble-avatar">🙋</div>
+          </div>
+          <div class="bubble-wrap you">
+            <div>
+              <div class="bubble-name">Em — sau khi tra hóa đơn</div>
+              <div class="bubble">"Please wait a moment, I'll check for you."</div>
+            </div>
+            <div class="bubble-avatar">🙋</div>
+          </div>
+          <div class="bubble-wrap you">
+            <div>
+              <div class="bubble-name">Em — thông báo tổng tiền</div>
+              <div class="bubble">"Your total is 850,000 Vietnamese dong." <strong>(vừa nói vừa gõ số ra màn hình hoặc tờ giấy để họ nhìn thấy)</strong></div>
+            </div>
+            <div class="bubble-avatar">🙋</div>
+          </div>
         </div>
+        <div class="sit-result good"><div class="sit-result-icon">✅</div><div><strong>Mẹo vàng:</strong> Kết hợp lời nói + chỉ tay + viết số ra giấy. Giao tiếp không chỉ bằng miệng — cử chỉ giúp rất nhiều khi tiếng Anh còn hạn chế.</div></div>
+        <div class="sit-result warn" style="margin-top:8px"><div class="sit-result-icon">💡</div><div>Nếu bệnh nhân nói quá nhanh hoặc em không hiểu: <em>"I'm sorry, could you say that again slowly?"</em> — Đừng gật đầu giả vờ hiểu rồi xử lý sai.</div></div>
       </div>
     </div>
   </div>
 
-  <!-- ─── PANEL 4: Kết thúc ─── -->
-  <div class="section-panel" id="panel-4">
-    <div class="section-intro">
-      <div class="section-intro-icon">🎯</div>
-      <div>
-        <h2>Câu hỏi kết & Lời bày tỏ</h2>
-        <p>Phần tạo ấn tượng cuối — nơi bạn thể hiện tầm nhìn và mong muốn gắn bó.</p>
+  <div class="hl-box gold">
+    <div class="hl-icon">💡</div>
+    <div class="hl-content">
+      <strong>Không biết thì xin hỗ trợ — không phải xấu hổ</strong>
+      <p>Nếu bệnh nhân nói tiếng Anh phức tạp và em không hiểu, có thể nói: <em>"Please wait, I'll get someone to help you."</em> rồi nhờ đồng nghiệp hoặc gọi bộ phận hỗ trợ. Đây là cách chuyên nghiệp — không phải thất bại.</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-title">✅ Bài tập ngày hôm nay</div>
+    <ul class="checklist">
+      <li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><span class="check-text">Đọc to 5 câu tiếng Anh 10 lần — không nhìn bảng</span></li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><span class="check-text">Nhờ chồng đóng giả bệnh nhân nước ngoài, thực hành 2–3 lần</span></li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><span class="check-text">Luyện nói số tiền bằng tiếng Anh: 500,000 / 1,200,000 / 3,750,000</span></li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     NGÀY 4
+══════════════════════════════════ -->
+<div class="section d4" id="day-3">
+  <div class="day-header">
+    <div class="day-badge"><div class="num">4</div><div class="lbl">Ngày</div></div>
+    <div class="day-meta">
+      <h2>Tác phong Vinmec</h2>
+      <div class="day-desc">Những điều họ quan sát ngay từ tuần đầu tiên</div>
+    </div>
+  </div>
+  <div class="day-motto">Nghiệp vụ có thể học dần. Nhưng tác phong chuyên nghiệp phải có từ ngày đầu tiên bước vào.</div>
+
+  <div class="block">
+    <div class="block-title">⏰ Giờ giấc — Không có ngoại lệ</div>
+    <div class="hl-box red">
+      <div class="hl-icon">🚨</div>
+      <div class="hl-content">
+        <strong>Đến sớm 10–15 phút mỗi ca trong suốt thời gian thử việc</strong>
+        <p>Vinmec bàn giao ca rất nghiêm — nếu em trễ, đồng nghiệp ca trước bị ảnh hưởng. Đây là lỗi nặng nhất trong thử việc, dù chỉ xảy ra một lần.</p>
       </div>
     </div>
-
-    <div class="card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="q-number">11</div>
-        <div class="q-meta">
-          <div class="q-tag tag-close">Kết thúc</div>
-          <div class="q-text">5 năm nữa bạn thấy mình ở đâu?</div>
-        </div>
-        <button class="toggle-btn">▾</button>
-      </div>
-      <div class="card-answer">
-        <div class="answer-block">
-          <div class="answer-text">
-            "Dạ, trong 5 năm tới em mong muốn được <strong>phát triển sâu và bền vững</strong> trong lĩnh vực tài chính — viện phí của bệnh viện. Trước mắt, em muốn thành thạo hoàn toàn quy trình thanh toán của Vinmec, nắm vững phần mềm HIS và các quy định viện phí theo bảo hiểm y tế.<br><br>
-            Về lâu dài, nếu có cơ hội, em muốn đảm nhận vai trò <strong>tổ trưởng ca hoặc hỗ trợ đào tạo nhân viên mới</strong> — để vừa đóng góp cho tổ chức, vừa tiếp tục nâng cao chuyên môn của bản thân."
-          </div>
-        </div>
-        <div class="tip-box">
-          <div class="tip-icon">💡</div>
-          <div class="tip-text"><strong>Mẹo:</strong> Thể hiện định hướng rõ ràng nhưng thực tế — không nói quá cao như "em muốn làm giám đốc", cũng không quá thụ động như "em chỉ muốn làm tốt công việc hiện tại".</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="q-number">12</div>
-        <div class="q-meta">
-          <div class="q-tag tag-close">Kết thúc</div>
-          <div class="q-text">Bạn có câu hỏi gì cho chúng tôi không?</div>
-        </div>
-        <button class="toggle-btn">▾</button>
-      </div>
-      <div class="card-answer">
-        <div class="answer-block">
-          <div class="answer-text">
-            "Dạ, em có một vài điều muốn được tìm hiểu thêm:<br><br>
-            <strong>1.</strong> Phần mềm quản lý viện phí bệnh viện hiện tại đang sử dụng là gì, và thời gian đào tạo cho nhân viên mới thường kéo dài bao lâu ạ?<br><br>
-            <strong>2.</strong> Ca làm việc thường được phân chia như thế nào — và quy trình đổi ca trong trường hợp phát sinh được thực hiện ra sao ạ?<br><br>
-            <strong>3.</strong> Tiêu chí đánh giá hiệu quả công việc của vị trí Thu ngân tại Vinmec là gì để em có thể định hướng phấn đấu từ những ngày đầu ạ?"
-          </div>
-        </div>
-        <div class="tip-box">
-          <div class="tip-icon">💡</div>
-          <div class="tip-text"><strong>Mẹo:</strong> Hỏi về <em>công việc và tiêu chí đánh giá</em> trước — cho thấy bạn tập trung vào đóng góp. Hỏi về lương thưởng sau cùng hoặc để vòng 2.</div>
-        </div>
-
-        <div style="margin-top: 20px; padding: 20px 22px; background: linear-gradient(135deg, #0b2c4a, #1456a0); border-radius: 10px;">
-          <div style="font-family: 'Cormorant Garamond', serif; font-size: 13px; color: #a8d0f0; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px;">Lời kết — Bày tỏ mong muốn</div>
-          <div style="font-size: 14px; color: rgba(255,255,255,0.88); line-height: 1.9; font-style: italic;">
-            "Cảm ơn anh/chị đã dành thời gian trao đổi với em hôm nay. Qua buổi trò chuyện, em càng thêm mong muốn được trở thành một phần của đội ngũ Vinmec.<br><br>
-            Em hiểu rằng vị trí Thu ngân đòi hỏi <strong style="color:#f5e6b8; font-style:normal;">sự cẩn thận, trung thực và tinh thần trách nhiệm cao</strong> — đây chính xác là những giá trị em luôn đặt lên hàng đầu trong suốt quá trình làm việc.<br><br>
-            Em không ngại áp lực, luôn sẵn sàng học hỏi và cam kết làm việc đúng quy trình. Em rất hy vọng được nhận cơ hội này để <strong style="color:#f5e6b8; font-style:normal;">chứng minh bằng hành động thực tế</strong>."
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- TIPS GRID -->
-    <div class="section-intro" style="margin-top: 32px;">
-      <div class="section-intro-icon">✨</div>
-      <div>
-        <h2>Checklist ngày phỏng vấn</h2>
-        <p>Chuẩn bị kỹ từng chi tiết nhỏ để tạo ấn tượng hoàn hảo.</p>
-      </div>
-    </div>
-    <div class="tips-grid">
-      <div class="tip-card">
-        <div class="tip-card-icon">👔</div>
-        <h3>Trang phục</h3>
+    <div class="hl-box gold">
+      <div class="hl-icon">📱</div>
+      <div class="hl-content">
+        <strong>Điện thoại cá nhân</strong>
         <ul>
-          <li>Áo sơ mi trắng hoặc xanh nhạt, quần tây tối màu</li>
-          <li>Giày da hoặc búp bê kín mũi</li>
-          <li>Tóc gọn gàng, trang điểm nhẹ nhàng</li>
-          <li>Không đeo trang sức nhiều, nước hoa nhẹ</li>
+          <li>Chỉ dùng trong giờ nghỉ, không dùng khi đang tiếp bệnh nhân</li>
+          <li>Để điện thoại chế độ im lặng khi làm việc</li>
+          <li>Không nhắn tin khi đang đứng ở quầy — dù không có bệnh nhân</li>
         </ul>
       </div>
-      <div class="tip-card">
-        <div class="tip-card-icon">📁</div>
-        <h3>Hồ sơ mang theo</h3>
-        <ul>
-          <li>2 bản CV in (cả 2 phòng phỏng vấn đều có)</li>
-          <li>CCCD photo công chứng × 2</li>
-          <li>Bằng cấp, chứng chỉ photo</li>
-          <li>Ảnh thẻ 3×4 còn mới (×4 ảnh)</li>
-        </ul>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-title">🗣️ Ngôn ngữ & xưng hô chuẩn</div>
+    <div class="info-card" style="padding:0; overflow:hidden;">
+      <table class="eng-table">
+        <tr><th>Tình huống</th><th>Nói đúng</th><th>Không nên nói</th></tr>
+        <tr>
+          <td>Chào khi bệnh nhân đến</td>
+          <td style="color:var(--green)"><strong>"Dạ, anh/chị cần em hỗ trợ gì ạ?"</strong></td>
+          <td style="color:var(--red)">"Gì đó?" / Im lặng nhìn</td>
+        </tr>
+        <tr>
+          <td>Khi bệnh nhân chờ lâu</td>
+          <td style="color:var(--green)"><strong>"Dạ, anh/chị vui lòng chờ em thêm chút ạ, em đang xử lý."</strong></td>
+          <td style="color:var(--red)">Không nói gì, tiếp tục gõ máy</td>
+        </tr>
+        <tr>
+          <td>Gọi đồng nghiệp</td>
+          <td style="color:var(--green)"><strong>Anh / Chị + tên</strong> (dù họ nhỏ tuổi hơn)</td>
+          <td style="color:var(--red)">Gọi tên không — đặc biệt trước bệnh nhân</td>
+        </tr>
+        <tr>
+          <td>Khi mắc lỗi</td>
+          <td style="color:var(--green)"><strong>"Dạ, em xin lỗi, em đã nhầm. Để em kiểm tra lại ạ."</strong></td>
+          <td style="color:var(--red)">Im lặng sửa hoặc đổ lỗi hệ thống</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-title">📝 Thói quen sổ tay — Quan trọng hơn bạn nghĩ</div>
+    <div class="info-card">
+      <ul>
+        <li>Mang sổ tay mỗi ngày — ghi lại mọi quy trình được hướng dẫn, kể cả thứ tưởng như đơn giản</li>
+        <li>Ghi tên, số điện thoại nội bộ của từng người liên quan: trưởng ca, IT, CSKH, kế toán</li>
+        <li>Ghi lại các tình huống bất thường đã gặp và cách xử lý — để không hỏi lại câu cũ</li>
+        <li>Cuối mỗi ca, dành 5 phút xem lại ghi chú — ghi chép mà không đọc lại thì vô nghĩa</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-title">🎭 Tình huống tác phong</div>
+    <div class="sit-card s-warn open">
+      <div class="sit-header" onclick="toggleSit(this)">
+        <div class="sit-icon">😬</div>
+        <div class="sit-label">Hay gặp</div>
+        <div class="sit-title">Không biết cách làm — xử lý thế nào?</div>
+        <div class="sit-toggle">▾</div>
       </div>
-      <div class="tip-card">
-        <div class="tip-card-icon">🧠</div>
-        <h3>Thái độ & ngôn ngữ</h3>
-        <ul>
-          <li>Đến sớm 10–15 phút, không muộn</li>
-          <li>Giao tiếp mắt khi trả lời, không nhìn xuống</li>
-          <li>Xưng hô "em – anh/chị" nhất quán</li>
-          <li>Giọng rõ ràng, không nói quá nhanh</li>
-        </ul>
+      <div class="sit-body">
+        <div class="sit-scene">📍 Bệnh nhân yêu cầu điều chỉnh hóa đơn một khoản mà em chưa biết cách làm trên phần mềm.</div>
+        <div class="chat">
+          <div class="bubble-wrap you">
+            <div>
+              <div class="bubble-name">Em — ĐÚNG cách</div>
+              <div class="bubble">"Dạ, anh/chị chờ em một chút ạ. Khoản này em cần xác nhận với trưởng ca để xử lý đúng quy trình cho anh/chị."</div>
+            </div>
+            <div class="bubble-avatar">🙋</div>
+          </div>
+        </div>
+        <div class="sit-result good"><div class="sit-result-icon">✅</div><div><strong>Không biết → hỏi ngay</strong> là cách đúng. Tự làm mà sai sẽ tạo ra vấn đề lớn hơn nhiều — đặc biệt với tiền và hồ sơ bảo hiểm.</div></div>
+        <div class="sit-result bad" style="margin-top:8px"><div class="sit-result-icon">❌</div><div><strong>Không bao giờ:</strong> Tự ý xử lý khi chưa chắc, hoặc click đại một nút nào đó để xem thử.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     NGÀY 5
+══════════════════════════════════ -->
+<div class="section d5" id="day-4">
+  <div class="day-header">
+    <div class="day-badge"><div class="num">5</div><div class="lbl">Ngày</div></div>
+    <div class="day-meta">
+      <h2>Tư duy thử việc đúng</h2>
+      <div class="day-desc">Hiểu họ đang đánh giá gì — và làm đúng những thứ đó</div>
+    </div>
+  </div>
+  <div class="day-motto">Thử việc không phải cuộc thi ai giỏi nhất. Đó là cuộc thi ai đáng tin nhất.</div>
+
+  <div class="block">
+    <div class="block-title">🔍 Vinmec thực sự đánh giá điều gì?</div>
+    <div class="mindset-grid">
+      <div class="mindset-card">
+        <div class="mindset-icon">🤝</div>
+        <div class="mindset-title">Đáng tin với tiền & hồ sơ</div>
+        <div class="mindset-desc">Không sai lệch quỹ. Không bỏ qua bước xác nhận. Báo cáo khi có vấn đề.</div>
+      </div>
+      <div class="mindset-card">
+        <div class="mindset-icon">📚</div>
+        <div class="mindset-title">Chịu học hỏi</div>
+        <div class="mindset-desc">Hỏi khi chưa biết. Ghi chép cẩn thận. Không hỏi đi hỏi lại cùng một câu.</div>
+      </div>
+      <div class="mindset-card">
+        <div class="mindset-icon">😊</div>
+        <div class="mindset-title">Hòa đồng với team</div>
+        <div class="mindset-desc">Chào hỏi, không ngại việc nhỏ, sẵn sàng hỗ trợ đồng nghiệp khi cần.</div>
+      </div>
+      <div class="mindset-card">
+        <div class="mindset-icon">🧘</div>
+        <div class="mindset-title">Bình tĩnh dưới áp lực</div>
+        <div class="mindset-desc">Không hoảng loạn khi đông bệnh nhân. Không mất tập trung khi bị giục.</div>
       </div>
     </div>
   </div>
 
-  <!-- ─── PANEL 5: Hỏi ngược NTD ─── -->
-  <div class="section-panel" id="panel-5">
-    <div class="section-intro">
-      <div class="section-intro-icon">🙋</div>
-      <div>
-        <h2>Câu hỏi dành cho nhà tuyển dụng</h2>
-        <p>Hỏi thông minh = thể hiện bạn nghiêm túc. Ưu tiên hỏi về công việc trước, quyền lợi sau.</p>
+  <div class="block">
+    <div class="block-title">💡 Sai lầm phổ biến trong thử việc</div>
+    <div class="sit-card s-red open">
+      <div class="sit-header" onclick="toggleSit(this)">
+        <div class="sit-icon">🙈</div>
+        <div class="sit-label">Thường gặp</div>
+        <div class="sit-title">Giấu sai sót vì sợ bị đánh giá</div>
+        <div class="sit-toggle">▾</div>
+      </div>
+      <div class="sit-body">
+        <div class="sit-scene">📍 Cuối ca, em phát hiện hóa đơn nhập sai — sửa được nhưng chưa chắc đã đúng. Em đang cân nhắc có nên báo không.</div>
+        <div class="sit-result good"><div class="sit-result-icon">✅</div><div><strong>Luôn luôn báo cáo</strong> — dù sai sót nhỏ. Câu nói: <em>"Anh/chị ơi, em vừa phát hiện có thể em nhập sai khoản này, em muốn nhờ anh/chị kiểm tra lại giúp em ạ."</em></div></div>
+        <div class="sit-result bad" style="margin-top:8px"><div class="sit-result-icon">❌</div><div><strong>Tự sửa âm thầm</strong> mà không báo = rủi ro lớn. Nếu sau này phát hiện ra, mức độ tin tưởng sụp đổ hoàn toàn.</div></div>
+        <div class="sit-result warn" style="margin-top:8px"><div class="sit-result-icon">💛</div><div>Trong thử việc, <strong>người báo lỗi sớm được đánh giá cao hơn người không bao giờ có lỗi</strong> — vì không ai tin người hoàn hảo hoàn toàn.</div></div>
       </div>
     </div>
 
-    <!-- NHÓM 1: Yêu cầu đặc thù -->
-    <div style="margin-bottom:10px; padding: 8px 16px; background: var(--navy); border-radius:6px; display:inline-block;">
-      <span style="font-size:11px; font-weight:600; color:var(--gold); letter-spacing:2px; text-transform:uppercase;">Nhóm 1 — Yêu cầu đặc thù vị trí</span>
-    </div>
-
-    <div class="card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="q-number" style="background:linear-gradient(135deg,#0b2c4a,#c9a84c)">1</div>
-        <div class="q-meta">
-          <div class="q-tag" style="background:#fff8e1;color:#7a5c00">Đặc thù nghề</div>
-          <div class="q-text">Vị trí Thu ngân tại Vinmec có điểm gì khác so với thu ngân tại bệnh viện thông thường không ạ?</div>
-        </div>
-        <button class="toggle-btn">▾</button>
+    <div class="sit-card s-warn">
+      <div class="sit-header" onclick="toggleSit(this)">
+        <div class="sit-icon">😴</div>
+        <div class="sit-label">Hay gặp</div>
+        <div class="sit-title">Thụ động — chỉ làm khi được giao</div>
+        <div class="sit-toggle">▾</div>
       </div>
-      <div class="card-answer">
-        <div class="answer-block">
-          <div class="answer-text">
-            <strong>Mục đích hỏi:</strong> Cho thấy bạn hiểu Vinmec là bệnh viện quốc tế — có yêu cầu cao hơn về chuẩn mực dịch vụ, quy trình, và có thể có bệnh nhân nước ngoài.<br><br>
-            <strong>Thông tin cần khai thác:</strong> Có phải xử lý hóa đơn bảo hiểm quốc tế không? Có yêu cầu tiếng Anh giao tiếp cơ bản không? Quy trình thanh toán có phức tạp hơn so với bệnh viện công không?
+      <div class="sit-body">
+        <div class="sit-scene">📍 Hết bệnh nhân, em ngồi không và chờ. Đồng nghiệp đang bận sắp xếp hồ sơ.</div>
+        <div class="chat">
+          <div class="bubble-wrap you">
+            <div>
+              <div class="bubble-name">Em — nên nói</div>
+              <div class="bubble">"Chị ơi, lúc này em rảnh — em có thể giúp chị việc gì không ạ?"</div>
+            </div>
+            <div class="bubble-avatar">🙋</div>
           </div>
         </div>
-        <div class="tip-box">
-          <div class="tip-icon">✅</div>
-          <div class="tip-text"><strong>Hỏi câu này trước tiên</strong> — thể hiện bạn đã tìm hiểu về Vinmec và muốn chuẩn bị đúng năng lực. Nhà tuyển dụng sẽ đánh giá cao sự chủ động này.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="q-number" style="background:linear-gradient(135deg,#0b2c4a,#c9a84c)">2</div>
-        <div class="q-meta">
-          <div class="q-tag" style="background:#fff8e1;color:#7a5c00">Đặc thù nghề</div>
-          <div class="q-text">Phần mềm quản lý viện phí tại đây là gì, và nhân viên mới sẽ được đào tạo trong bao lâu ạ?</div>
-        </div>
-        <button class="toggle-btn">▾</button>
-      </div>
-      <div class="card-answer">
-        <div class="answer-block">
-          <div class="answer-text">
-            <strong>Mục đích hỏi:</strong> Cho thấy bạn chú trọng đến việc thành thạo công cụ làm việc — không phải chỉ "xin việc cho có".<br><br>
-            <strong>Thông tin cần khai thác:</strong> Vinmec dùng HIS nào (Medisoft, Oracle Health, hay phần mềm nội bộ)? Thời gian onboarding bao lâu? Có người hướng dẫn kèm cặp không?
-          </div>
-        </div>
-        <div class="tip-box">
-          <div class="tip-icon">✅</div>
-          <div class="tip-text">Nếu được hỏi lại "Bạn có biết dùng phần mềm HIS chưa?" — hãy thành thật: chưa dùng HIS nhưng đã dùng Webnhathuoc, và bạn học phần mềm mới rất nhanh.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="q-number" style="background:linear-gradient(135deg,#0b2c4a,#c9a84c)">3</div>
-        <div class="q-meta">
-          <div class="q-tag" style="background:#fff8e1;color:#7a5c00">Đặc thù nghề</div>
-          <div class="q-text">Bộ phận Thu ngân phối hợp với những phòng ban nào trong quy trình thanh toán ạ?</div>
-        </div>
-        <button class="toggle-btn">▾</button>
-      </div>
-      <div class="card-answer">
-        <div class="answer-block">
-          <div class="answer-text">
-            <strong>Mục đích hỏi:</strong> Hiểu rõ chuỗi quy trình để biết mình cần phối hợp với ai — khoa lâm sàng, phòng bảo hiểm, kế toán, bộ phận CSKH?<br><br>
-            <strong>Thông tin cần khai thác:</strong> Ai xác nhận hóa đơn trước khi thu tiền? Khi có tranh chấp hóa đơn thì escalate lên ai? Có bộ phận hỗ trợ bệnh nhân bảo hiểm riêng không?
-          </div>
-        </div>
-        <div class="tip-box">
-          <div class="tip-icon">✅</div>
-          <div class="tip-text">Câu này cho thấy bạn tư duy theo hệ thống — không chỉ nghĩ đến công việc tại quầy mà còn quan tâm đến toàn bộ quy trình. Điểm cộng lớn.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- NHÓM 2: Bảo hiểm & Quyền lợi -->
-    <div style="margin: 28px 0 10px; padding: 8px 16px; background: #1565a0; border-radius:6px; display:inline-block;">
-      <span style="font-size:11px; font-weight:600; color:#f5e6b8; letter-spacing:2px; text-transform:uppercase;">Nhóm 2 — Bảo hiểm & Quyền lợi y tế</span>
-    </div>
-
-    <div class="card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="q-number" style="background:linear-gradient(135deg,#1456a0,#2e86de)">4</div>
-        <div class="q-meta">
-          <div class="q-tag tag-skill">Bảo hiểm</div>
-          <div class="q-text">Nhân viên được đóng BHXH, BHYT, BHTN từ tháng thứ mấy ạ? Mức đóng như thế nào?</div>
-        </div>
-        <button class="toggle-btn">▾</button>
-      </div>
-      <div class="card-answer">
-        <div class="answer-block">
-          <div class="answer-text">
-            <strong>Mục đích hỏi:</strong> Đây là quyền lợi pháp lý cơ bản — hỏi thẳng nhưng lịch sự là hoàn toàn phù hợp.<br><br>
-            <strong>Cần lưu ý:</strong> Theo luật lao động, BHXH bắt buộc từ tháng làm việc đầu tiên nếu hợp đồng từ 1 tháng trở lên. Hỏi để xác nhận Vinmec thực hiện đúng, và xem họ có đóng trên mức lương thực tế hay chỉ mức tối thiểu không.
-          </div>
-        </div>
-        <div class="tip-box">
-          <div class="tip-icon">✅</div>
-          <div class="tip-text"><strong>Cách hỏi khéo:</strong> "Dạ, em muốn xác nhận thêm về chế độ BHXH — Vinmec đóng cho nhân viên từ thời điểm nào và tính trên mức lương nào ạ?"</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="q-number" style="background:linear-gradient(135deg,#1456a0,#2e86de)">5</div>
-        <div class="q-meta">
-          <div class="q-tag tag-skill">Bảo hiểm</div>
-          <div class="q-text">Nhân viên có được hưởng quyền lợi khám chữa bệnh tại Vinmec với ưu đãi không ạ?</div>
-        </div>
-        <button class="toggle-btn">▾</button>
-      </div>
-      <div class="card-answer">
-        <div class="answer-block">
-          <div class="answer-text">
-            <strong>Mục đích hỏi:</strong> Vinmec là bệnh viện quốc tế với chi phí cao — nhiều bệnh viện tư có chính sách khám nội bộ miễn phí hoặc giảm giá đáng kể cho nhân viên và người thân.<br><br>
-            <strong>Thông tin cần khai thác:</strong> Nhân viên được khám miễn phí không? Áp dụng cho người thân (vợ/chồng, con) không? Có bảo hiểm sức khỏe bổ sung (ngoài BHYT) không?
-          </div>
-        </div>
-        <div class="tip-box">
-          <div class="tip-icon">✅</div>
-          <div class="tip-text">Đây là phúc lợi đặc thù của bệnh viện — đừng ngại hỏi vì đây là thông tin quan trọng ảnh hưởng đến quyết định của bạn.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- NHÓM 3: Lương thưởng -->
-    <div style="margin: 28px 0 10px; padding: 8px 16px; background: #2e7d32; border-radius:6px; display:inline-block;">
-      <span style="font-size:11px; font-weight:600; color:#c8e6c9; letter-spacing:2px; text-transform:uppercase;">Nhóm 3 — Lương thưởng & Đãi ngộ</span>
-    </div>
-
-    <div class="card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="q-number" style="background:linear-gradient(135deg,#2e7d32,#43a047)">6</div>
-        <div class="q-meta">
-          <div class="q-tag" style="background:#e8f5e9;color:#1b5e20">Lương thưởng</div>
-          <div class="q-text">Ngoài lương cơ bản, vị trí này có phụ cấp ca đêm, phụ cấp thâm niên hoặc thưởng KPI không ạ?</div>
-        </div>
-        <button class="toggle-btn">▾</button>
-      </div>
-      <div class="card-answer">
-        <div class="answer-block">
-          <div class="answer-text">
-            <strong>Mục đích hỏi:</strong> Tổng thu nhập thực tế = lương cơ bản + phụ cấp + thưởng. Chỉ nhìn vào lương cơ bản có thể gây nhầm lẫn.<br><br>
-            <strong>Thông tin cần khai thác:</strong>
-            Phụ cấp ca tối/ca đêm tính thế nào (thường 150–200% lương giờ)? Có thưởng chuyên cần không? KPI được đánh giá theo tiêu chí gì? Thưởng được trả hàng tháng hay hàng quý?
-          </div>
-        </div>
-        <div class="tip-box">
-          <div class="tip-icon">✅</div>
-          <div class="tip-text"><strong>Cách hỏi khéo:</strong> "Dạ, em muốn hiểu rõ hơn về cơ cấu thu nhập — ngoài lương cơ bản thì vị trí này thường có thêm những khoản phụ cấp hoặc thưởng nào ạ?"</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="q-number" style="background:linear-gradient(135deg,#2e7d32,#43a047)">7</div>
-        <div class="q-meta">
-          <div class="q-tag" style="background:#e8f5e9;color:#1b5e20">Lương thưởng</div>
-          <div class="q-text">Chính sách thưởng lễ Tết và xét tăng lương hằng năm tại Vinmec được thực hiện như thế nào ạ?</div>
-        </div>
-        <button class="toggle-btn">▾</button>
-      </div>
-      <div class="card-answer">
-        <div class="answer-block">
-          <div class="answer-text">
-            <strong>Mục đích hỏi:</strong> Thưởng Tết và lộ trình tăng lương là yếu tố quan trọng khi quyết định gắn bó lâu dài.<br><br>
-            <strong>Thông tin cần khai thác:</strong>
-            Thưởng Tết tính theo số tháng lương hay cố định? Có thưởng các ngày lễ lớn (30/4, 2/9) không? Xét tăng lương định kỳ 6 tháng hay 1 năm? Tỷ lệ tăng trung bình là bao nhiêu?
-          </div>
-        </div>
-        <div class="tip-box">
-          <div class="tip-icon">✅</div>
-          <div class="tip-text">Hỏi câu này sau khi đã hỏi về công việc — không nên đây là câu đầu tiên. Nếu cảm thấy chưa đúng lúc, có thể để lại vòng 2 hoặc khi được offer.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- NHÓM 4: Lịch nghỉ -->
-    <div style="margin: 28px 0 10px; padding: 8px 16px; background: #6a1b9a; border-radius:6px; display:inline-block;">
-      <span style="font-size:11px; font-weight:600; color:#e1bee7; letter-spacing:2px; text-transform:uppercase;">Nhóm 4 — Lịch nghỉ lễ & Chính sách phép</span>
-    </div>
-
-    <div class="card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="q-number" style="background:linear-gradient(135deg,#6a1b9a,#8e24aa)">8</div>
-        <div class="q-meta">
-          <div class="q-tag tag-shift">Nghỉ phép</div>
-          <div class="q-text">Nhân viên thu ngân có được nghỉ lễ Tết không, hay phải trực ca và được bù như thế nào ạ?</div>
-        </div>
-        <button class="toggle-btn">▾</button>
-      </div>
-      <div class="card-answer">
-        <div class="answer-block">
-          <div class="answer-text">
-            <strong>Mục đích hỏi:</strong> Bệnh viện hoạt động 365 ngày — nhưng không có nghĩa nhân viên không có chế độ nghỉ lễ. Cần biết rõ để sắp xếp kế hoạch cá nhân.<br><br>
-            <strong>Thông tin cần khai thác:</strong>
-            Nếu trực Tết thì được tính thưởng trực lễ không? Có được nghỉ bù không? Lịch trực lễ được phân công như thế nào — xoay vòng hay đăng ký?
-          </div>
-        </div>
-        <div class="tip-box">
-          <div class="tip-icon">✅</div>
-          <div class="tip-text"><strong>Thái độ khi hỏi:</strong> Hỏi để hiểu — không phải để từ chối trực lễ. Có thể thêm: "Em hỏi để chuẩn bị tinh thần và sắp xếp gia đình phù hợp ạ."</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="q-number" style="background:linear-gradient(135deg,#6a1b9a,#8e24aa)">9</div>
-        <div class="q-meta">
-          <div class="q-tag tag-shift">Nghỉ phép</div>
-          <div class="q-text">Số ngày phép năm của nhân viên là bao nhiêu ngày, và có được cộng dồn sang năm sau không ạ?</div>
-        </div>
-        <button class="toggle-btn">▾</button>
-      </div>
-      <div class="card-answer">
-        <div class="answer-block">
-          <div class="answer-text">
-            <strong>Mục đích hỏi:</strong> Theo Bộ Luật Lao Động, nhân viên được ít nhất 12 ngày phép/năm. Một số công ty tư nhân có chính sách cao hơn.<br><br>
-            <strong>Thông tin cần khai thác:</strong>
-            Phép năm là bao nhiêu ngày (12, 14, hay 16 ngày)? Phép chưa dùng hết có chuyển sang năm sau không, hay được thanh toán? Có phép sinh nhật hoặc phép đặc biệt không?
-          </div>
-        </div>
-        <div class="tip-box">
-          <div class="tip-icon">✅</div>
-          <div class="tip-text">Câu hỏi này hoàn toàn chính đáng và chuyên nghiệp. Người biết hỏi về chính sách phép = người hiểu quyền lợi lao động của mình.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Gợi ý thứ tự hỏi -->
-    <div style="margin-top:32px; padding:24px; background:linear-gradient(135deg,#0b2c4a,#1456a0); border-radius:12px;">
-      <div style="font-family:'Cormorant Garamond',serif; font-size:16px; color:#f5e6b8; margin-bottom:16px; font-weight:600;">📋 Thứ tự hỏi khuyến nghị</div>
-      <div style="display:grid; gap:10px;">
-        <div style="display:flex; gap:12px; align-items:flex-start;">
-          <div style="flex-shrink:0; width:24px; height:24px; background:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:#3d2c00;">1</div>
-          <div style="font-size:13px; color:rgba(255,255,255,0.85); line-height:1.6;">Hỏi về <strong style="color:#a8d0f0;">yêu cầu đặc thù & quy trình làm việc</strong> trước — thể hiện bạn tập trung vào đóng góp.</div>
-        </div>
-        <div style="display:flex; gap:12px; align-items:flex-start;">
-          <div style="flex-shrink:0; width:24px; height:24px; background:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:#3d2c00;">2</div>
-          <div style="font-size:13px; color:rgba(255,255,255,0.85); line-height:1.6;">Hỏi về <strong style="color:#a8d0f0;">đào tạo onboarding & phần mềm</strong> — cho thấy bạn chuẩn bị nghiêm túc.</div>
-        </div>
-        <div style="display:flex; gap:12px; align-items:flex-start;">
-          <div style="flex-shrink:0; width:24px; height:24px; background:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:#3d2c00;">3</div>
-          <div style="font-size:13px; color:rgba(255,255,255,0.85); line-height:1.6;">Hỏi về <strong style="color:#a8d0f0;">bảo hiểm & quyền lợi y tế</strong> — chính đáng và quan trọng với môi trường bệnh viện.</div>
-        </div>
-        <div style="display:flex; gap:12px; align-items:flex-start;">
-          <div style="flex-shrink:0; width:24px; height:24px; background:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:#3d2c00;">4</div>
-          <div style="font-size:13px; color:rgba(255,255,255,0.85); line-height:1.6;">Hỏi về <strong style="color:#a8d0f0;">lịch nghỉ & lương thưởng</strong> sau cùng — hoặc để lại khi nhận được offer chính thức.</div>
-        </div>
-      </div>
-      <div style="margin-top:16px; padding:12px; background:rgba(255,255,255,0.07); border-radius:8px; font-size:12.5px; color:rgba(255,255,255,0.65); font-style:italic;">
-        💬 Không cần hỏi tất cả trong một buổi — chọn 3–4 câu quan trọng nhất, hỏi rõ ràng và lắng nghe kỹ câu trả lời.
+        <div class="sit-result good"><div class="sit-result-icon">✅</div><div>Chủ động xin việc khi rảnh = điểm cộng lớn. Vinmec đánh giá cao người không cần được nhắc nhở.</div></div>
       </div>
     </div>
   </div>
 
+  <div class="block">
+    <div class="block-title">📊 Theo dõi tiến độ thử việc</div>
+    <div class="info-card">
+      <p style="margin-bottom:12px">Cuối mỗi tuần, tự hỏi 3 câu này:</p>
+      <ul>
+        <li><strong>Tuần này mình đã hỏi và học được gì mới?</strong> — Nếu không nhớ được gì: cần ghi chép hơn</li>
+        <li><strong>Có sai sót nào xảy ra không, và mình xử lý thế nào?</strong> — Ghi vào sổ để không lặp lại</li>
+        <li><strong>Mình đã chủ động làm điều gì ngoài phần việc được giao?</strong> — Đây là thứ phân biệt người xuất sắc và người bình thường</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     NGÀY 6
+══════════════════════════════════ -->
+<div class="section d6" id="day-5">
+  <div class="day-header">
+    <div class="day-badge"><div class="num">6</div><div class="lbl">Ngày</div></div>
+    <div class="day-meta">
+      <h2>Ngày cuối & Lên đường</h2>
+      <div class="day-desc">Chuẩn bị mọi thứ — để ngày mai chỉ cần tập trung vào công việc</div>
+    </div>
+  </div>
+  <div class="day-motto">Hôm nay chuẩn bị kỹ — để ngày mai bước vào không phải lo bất cứ điều gì ngoài công việc.</div>
+
+  <div class="block">
+    <div class="block-title">🎒 Checklist hồ sơ & vật dụng</div>
+    <ul class="checklist">
+      <li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><span class="check-text">CCCD bản gốc + 2 bản photo công chứng</span></li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><span class="check-text">Bằng cấp, chứng chỉ (bản gốc + photo)</span></li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><span class="check-text">Ảnh thẻ 3×4 mới nhất (ít nhất 4 ảnh)</span></li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><span class="check-text">Sổ tay + bút (mang theo mỗi ngày)</span></li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><span class="check-text">Đồng phục / trang phục phù hợp đã chuẩn bị sẵn</span></li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><span class="check-text">Giày kín mũi, màu trung tính (không cao gót quá)</span></li>
+      <li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><span class="check-text">Biết rõ đường đi + thời gian di chuyển để tính giờ xuất phát</span></li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <div class="block-title">🧠 Ôn lại 5 điều cốt lõi</div>
+    <div class="mindset-grid">
+      <div class="mindset-card">
+        <div class="mindset-icon">👁</div>
+        <div class="mindset-title">Quan sát trước</div>
+        <div class="mindset-desc">Ngày đầu là ngày nhìn và học — không cần làm giỏi ngay.</div>
+      </div>
+      <div class="mindset-card">
+        <div class="mindset-icon">🙋</div>
+        <div class="mindset-title">Hỏi không ngại</div>
+        <div class="mindset-desc">Mỗi câu hỏi là một bước tiến. Chỉ người không hỏi mới mắc lỗi mãi.</div>
+      </div>
+      <div class="mindset-card">
+        <div class="mindset-icon">📝</div>
+        <div class="mindset-title">Ghi chép tất cả</div>
+        <div class="mindset-desc">Trí nhớ không đáng tin — sổ tay mới đáng tin.</div>
+      </div>
+      <div class="mindset-card">
+        <div class="mindset-icon">🤝</div>
+        <div class="mindset-title">Báo cáo khi sai</div>
+        <div class="mindset-desc">Sai sót nhỏ được báo sớm = không có chuyện. Giấu đi = vấn đề lớn.</div>
+      </div>
+      <div class="mindset-card">
+        <div class="mindset-icon">😊</div>
+        <div class="mindset-title">Nụ cười là công cụ</div>
+        <div class="mindset-desc">Bệnh nhân đang lo lắng — nụ cười chân thật của em có giá trị thực sự.</div>
+      </div>
+      <div class="mindset-card">
+        <div class="mindset-icon">⏰</div>
+        <div class="mindset-title">Không bao giờ trễ</div>
+        <div class="mindset-desc">Trong thời gian thử việc, đây là quy tắc tối thượng — không có ngoại lệ.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hl-box green">
+    <div class="hl-icon">💚</div>
+    <div class="hl-content">
+      <strong>Lời nhắn cuối</strong>
+      <p>Vinmec đã chọn em vì họ thấy tiềm năng. Công việc ngày đầu sẽ bỡ ngỡ — điều đó hoàn toàn bình thường và không ai kỳ vọng em hoàn hảo ngay.<br><br>
+      Chỉ cần bước vào với tinh thần <strong>cầu thị, chỉn chu và không sợ hỏi</strong> — em đã hơn phần lớn ứng viên khác rồi. Chúc em ngày đầu thật suôn sẻ! 🌟</p>
+    </div>
+  </div>
+
+  <div class="hl-box blue">
+    <div class="hl-icon">😴</div>
+    <div class="hl-content">
+      <strong>Tối nay — nghỉ ngơi, không ôn bài</strong>
+      <p>Ngủ đủ giấc là cách chuẩn bị tốt nhất cho ngày mai. Não nghỉ ngơi sẽ xử lý tình huống nhanh và bình tĩnh hơn nhiều so với não thức khuya lo lắng.</p>
+    </div>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<div class="page-footer">
+  Cẩm Nang 6 Ngày Đầu · Vinmec Hospital · Chỉ dành cho nhân viên mới
 </div>
 
 <script>
-function switchTab(idx) {
-  document.querySelectorAll('.tab').forEach((t, i) => t.classList.toggle('active', i === idx));
-  document.querySelectorAll('.section-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
-  window.scrollTo({ top: document.querySelector('.tabs-wrap').offsetTop - 10, behavior: 'smooth' });
+function showDay(idx, btn) {
+  document.querySelectorAll('.section').forEach((s,i) => s.classList.toggle('active', i===idx));
+  document.querySelectorAll('.nav-btn').forEach((b,i) => b.classList.toggle('active', i===idx));
+  window.scrollTo({top: document.querySelector('.sticky-nav').offsetTop - 4, behavior:'smooth'});
 }
-
-function toggleCard(header) {
-  const card = header.closest('.card');
-  card.classList.toggle('open');
+function toggleSit(header) {
+  header.closest('.sit-card').classList.toggle('open');
 }
-
-// Open first card of active panel by default
-document.querySelectorAll('.section-panel.active .card')[0]?.classList.add('open');
+// Init: open first sit-card in active section
+document.querySelectorAll('.section.active .sit-card')[0]?.classList.add('open');
 </script>
 </body>
 </html>
